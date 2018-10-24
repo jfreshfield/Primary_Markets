@@ -1,0 +1,11 @@
+mutation update_salesforce_contact($data: HashObject){
+  api_call_send(
+    data: $data
+    template: { name: "update_salesforce_contact" }
+  ) {
+    response{ status body }
+    errors {
+      message
+    }
+  } 
+}

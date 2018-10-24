@@ -1,0 +1,10 @@
+mutation {
+  api_call_send(
+    template: { name: "authorize_salesforce" }
+  ) {
+    response{ status body }
+    errors {
+      message
+    }
+  }
+}

@@ -1,0 +1,6 @@
+name: user_details
+custom_attributes:
+- name: email
+  attribute_type: string
+- name: password
+  attribute_type: string

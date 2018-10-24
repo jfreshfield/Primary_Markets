@@ -1,0 +1,47 @@
+---
+name: developer_sign_up
+resource: User
+resource_owner: anyone
+redirect_to: /sign-in
+configuration:
+  email:
+  password:
+  first_name:
+    validation: { presence: true }
+  profiles:
+    developer:
+      enabled:
+        property_options:
+          default: true
+          readonly: true
+      validation:
+        presence: true
+    validation:
+      presence: true
+callback_actions: "{% execute_query 'user_session_create', email: @form.email, password: @form.password %}"
+email_notifications:
+  - welcome_user      
+---
+{% form %}
+  <label for="first_name">First name</label>
+  <input name="{{ form_builder.fields.first_name.name }}" value="{{ form_builder.fields.first_name.value }}" id="first_name" type="text">
+  {% if form_builder.errors.first_name %}
+    <p>{{ form_builder.errors.first_name }}</p>
+  {% endif %}
+
+  <label for="email">Email</label>
+  <input name="{{ form_builder.fields.email.name }}" value="{{ form_builder.fields.email.value }}" id="email" type="email">
+  {% if form_builder.errors.email %}
+    <p>{{ form_builder.errors.email }}</p>
+  {% endif %}
+
+  <label for="password">Password</label>
+  <input name="{{ form_builder.fields.password.name }}" id="password" type="password">
+  {% if form_builder.errors.password %}
+    <p>{{ form_builder.errors.password }}</p>
+  {% endif %}
+
+  <input value="{{ form_builder.fields.profiles.developer.enabled.value }}" name="{{ form_builder.fields.profiles.developer.enabled.name }}" type="hidden">
+
+  <button>Create</button>
+{% endform %}

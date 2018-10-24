@@ -1,0 +1,15 @@
+---
+name: send_request
+to: 'http://playpen2.staging-sydney.near-me.com/test-endpoint.json'
+enabled: true
+format: http
+trigger_condition: true
+request_type: GET
+callback: "{%- assign response_json = response.body | to_hash -%}{% execute_query 'persist_in_custom_attribute', user_id: form.id, third_party_api_id: response_json.third_party_api_id %}"
+headers: '{
+  "Content-Type": "application/json"
+}'
+---
+{
+  "id": "{{ form.id }}"
+}

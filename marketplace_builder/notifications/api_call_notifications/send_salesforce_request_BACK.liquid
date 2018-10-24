@@ -1,0 +1,16 @@
+---
+name: send_salesforce_request_BACKUP
+to: 'https://primarymarkets.my.salesforce.com/services/data/v43.0/sobjects/Opportunity'
+enabled: true
+format: http
+trigger_condition: true
+request_type: POST
+callback: "{% if data.id == blank %}{%- assign response_json = response.body | to_hash -%}{% execute_query 'store_id', user_id: data.user_id, account_ID: response_json.id %}{% endif %}"
+headers: >
+  {
+    "authorization": "Bearer {{ response.token }}"
+  }
+---
+$.ajax(settings).done(function (response) {
+  console.log(response);
+});

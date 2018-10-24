@@ -1,0 +1,137 @@
+---
+name: process_membership
+resource: Customization
+resource_owner: anyone
+configuration: 
+---
+
+    {% comment %}
+        This page is used to create the new Membership details in Salesforce. In particular, we create a new Account object/record, and populate the required fields according to 
+        the details entered by the User. We also create an associated Contact object/record for the new Member.
+    {% endcomment %} 
+
+    {% comment %}
+        Create an Account object/record for the new Member, in Salesforce.
+    {% endcomment %}
+
+    {% execute_query 'log', message: context.params.membershipType %}    
+
+    {% execute_query 'authorize_to_salesforce', result_name: 'authorize_response' %}      
+    {% if authorize_response.api_call_send.response.body %}
+        {% assign response = authorize_response.api_call_send.response.body | to_hash %}
+    {% endif %}
+
+    {% execute_query 'log', message: response %}
+
+    {% if response.access_token == blank %}
+        {% execute_query 'log', type: 'error', message: 'Authorization to salesforce failed!' %}
+    {% else %}
+        {% assign fullName = context.params.firstName | append: " " | append: context.params.lastName %}
+        {% execute_query 'log', message: context.params.assetIndustryOther %}
+        {% execute_query 'log', message: context.params.ecosystem %}
+
+        {% assign membershipType = context.params.membershipType | replace: ",", ";" %}  
+        {% assign assetTypesOfInterest = context.params.assetTypesOfInterest | replace: ",", ";" %}
+        {% assign assetIndustry = context.params.assetIndustry | replace: ",", ";" %}
+        {% assign ecosystem = context.params.ecosystem | replace: ",", ";" %}
+        {% if context.params.intermediaryType == "undefined" %}
+            {% assign intermediaryType = null %}
+        {% else %}
+            {% assign intermediaryType = context.params.intermediaryType %}   
+        {% endif %}
+
+        {% execute_query 'log', message: ecosystem %}
+        {% execute_query 'log', message: fullName %}
+        {% execute_query 'log', message: assetIndustry %}
+    
+        {% capture data_string %}
+        {
+            "salesforce_request": "https://primarymarkets--partial.cs57.my.salesforce.com/services/data/v43.0/sobjects/Account/",
+            "access_token": "{{ response.access_token }}",
+            "instance_url": "{{ response.instance_url }}",
+            "name": "{{ fullName }}",
+            "firstName": "{{ context.params.firstName }}",
+            "lastName": "{{ context.params.lastName }}",
+            "email": "{{ context.params.email }}",
+            "mobile": "{{ context.params.mobile }}",
+            "country": "{{ context.params.country }}",
+            "state": "{{ context.params.state }}",
+            "membershipType": "{{ membershipType }}",
+            "assetTypesOfInterest": "{{ assetTypesOfInterest }}",
+            "assetIndustry": "{{ assetIndustry }}",
+            "buyerType": "{{ context.params.buyerType }}",
+            "intermediaryType": "{{ intermediaryType }}",
+            "ecosystem": "{{ ecosystem }}",
+            "amountPerDeal": "{{ context.params.amountPerDeal }}",
+            "investmentsPerYear": "{{ context.params.investmentsPerYear }}"                   
+        }
+        {% endcapture %}
+
+        {% assign data = data_string | to_hash %}
+        {% execute_query 'log', message: response %}
+        {% execute_query 'log', message: data %}
+        {% execute_query 'update_salesforce_account', data: data, result_name: 'api_response' %}
+
+        {% if api_response.api_call_send.response.body %}
+            {% assign response_data = api_response.api_call_send.response.body | to_hash %}
+        {% endif %}  
+
+        {% execute_query 'log', message: response_data %}
+        {% assign accountID = response_data.id %}
+
+        {% comment %}
+            Create a Contact object/record for the new Member, in Salesforce.
+        {% endcomment %}                 
+
+        {% capture data_string %}
+        {
+            "salesforce_request": "https://primarymarkets--partial.cs57.my.salesforce.com/services/data/v43.0/sobjects/Contact/",
+            "access_token": "{{ response.access_token }}",
+            "instance_url": "{{ response.instance_url }}",
+            "accountID": "{{ accountID }}",
+            "firstName": "{{ context.params.firstName }}",
+            "lastName": "{{ context.params.lastName }}",
+            "email": "{{ context.params.email }}",
+            "mobile": "{{ context.params.mobile }}",
+            "country": "{{ context.params.country }}",
+            "state": "{{ context.params.state }}",
+            "membershipType": "{{ membershipType }}",
+            "assetTypesOfInterest": "{{ assetTypesOfInterest }}",
+            "assetIndustry": "{{ assetIndustry }}",
+            "assetIndustryOther": "{{ context.params.assetIndustryOther }}",
+            "buyerType": "{{ context.params.buyerType }}",
+            "intermediaryType": "{{ intermediaryType }}",
+            "ecosystem": "{{ ecosystem }}",
+            "amountPerDeal": "{{ context.params.amountPerDeal }}",
+            "investmentsPerYear": "{{ context.params.investmentsPerYear }}"
+        }
+        {% endcapture %}
+
+        {% assign data = data_string | to_hash %}
+        {% execute_query 'log', message: response %}
+        {% execute_query 'log', message: data %}
+        {% execute_query 'update_salesforce_contact', data: data, result_name: 'api_response' %}
+
+        {% if api_response.api_call_send.response.body %}
+            {% assign response_data = api_response.api_call_send.response.body | to_hash %}
+        {% endif %}  
+
+        {% execute_query 'log', message: response_data %}                 
+    {% endif %}   
+
+    <form>
+        <!DOCTYPE html amp>
+        <html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="https://www.facebook.com/2008/fbml" amp>      
+            <body id="body">          
+                <div id="offering-left-panel">
+                    <div class="offering-left-group" style = "margin-top:-550px; margin-left:-135px;float:left;width:1000px;">
+                    <h1>Processing Membership Request to PrimaryMarkets!</h1>
+                    <p>Please DO NOT close this tab, otherwise your Membership request will not be completed.</p>
+                </div>
+            </body>
+        </html>
+    </form>
+
+    <script>
+        window.open('https://playpen2.staging-sydney.near-me.com/thank-you-membership', '_self');
+    </script>    

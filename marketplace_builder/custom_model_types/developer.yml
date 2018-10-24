@@ -1,0 +1,12 @@
+name: developer
+custom_attributes:
+- name: bio
+  attribute_type: string
+- name: years_of_experience
+  attribute_type: integer
+- name: hourly_rate
+  attribute_type: float
+- name: avatar
+  attribute_type: photo
+- name: cv
+  attribute_type: custom_attachment

@@ -1,0 +1,31 @@
+---
+name: update_salesforce_contact
+to: '{{ data.salesforce_request }}'
+enabled: true
+format: http
+trigger_condition: true
+request_type: POST
+callback: "{%- assign api_response_asset = response.body | to_hash -%}"
+headers: '{ 
+    "Authorization": "Bearer {{ data.access_token }}",
+    "Content-Type": "application/json;charset=UTF-8"
+     }'
+---
+{
+  "AccountId": "{{ data.accountID }}",  
+  "FirstName": "{{ data.firstName }}",
+  "LastName": "{{ data.lastName }}",
+  "Email": "{{ data.email }}",
+  "MobilePhone": "{{ data.mobile }}",
+  "MailingCountry": "{{ data.country }}",
+  "MailingState": "{{ data.state }}",
+  "Contact_Membership_Type__c": "{{ data.membershipType }}",
+  "Asset_Types_of_Interest__c": "{{ data.assetTypesOfInterest }}",
+  "Industry_Interests__c": "{{ data.assetIndustry }}",
+  "OtherIndustryInterest__c": "{{ data.assetIndustryOther }}",
+  "Buyer_Type__c": "{{ data.buyerType }}",
+  "Intermediary_Type__c": "{{ data.intermediaryType }}",
+  "Ecosystems__c": "{{ data.ecosystem }}",
+  "Investment_Amount_Per_Deal__c": "{{ data.amountPerDeal }}",
+  "Number_of_Investments_per_year__c": "{{ data.investmentsPerYear }}"
+}

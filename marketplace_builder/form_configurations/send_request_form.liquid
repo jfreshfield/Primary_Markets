@@ -1,0 +1,47 @@
+---
+name: send_request_form
+resource: User
+configuration:
+redirect_to: /salesforce   
+async_callback_actions:
+  content: >
+    {% execute_query 'authorize_to_salesforce', result_name: 'authorize_response' %}
+    {% if authorize_response.api_call_send.response.body %}
+      {% assign response = authorize_response.api_call_send.response.body | to_hash %}
+    {% endif %}
+    {% if response.access_token == blank %}
+      {% execute_query 'log', type: 'error', message: 'Authorization to salesforce failed!' %}
+    {% else %}
+      {% capture data_string %}
+        {
+              "access_token": "{{ response.access_token }}",
+              "instance_url": "{{ response.instance_url }}",
+        }
+      {% endcapture %}
+      {% assign data = data_string | to_hash %}
+      {% execute_query 'log', message: data %}
+      console.log("Data: " + data);
+      {% comment %}
+      {% execute_query 'send_to_salesforce', data: data, template: "send_new_signup_request" %}
+      {% endcomment %}
+      {% execute_query 'send_to_salesforce', result_name: 'api_response' %}
+      {% if api_response.api_call_send.response.body %}
+        {% assign response_data = api_response.api_call_send.response.body | to_hash %}
+      {% endif %}  
+      {% if api_response.objectDescribe == blank %}
+        {% execute_query 'log', type: 'error', message: 'Request to salesforce failed!' %}
+      {% else %}
+        {% capture response_data_string %}
+            {
+                  "objectDescribe": "{{ api_response.objectDescribe }}",
+            }
+        {% endcapture %}   
+        {% assign response_data = response_data_string | to_hash %}
+        {% execute_query 'log', message: response_data %}         
+      {% endif %}     
+    {% endif %}
+---
+
+
+
+

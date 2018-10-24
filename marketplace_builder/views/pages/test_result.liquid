@@ -1,0 +1,20 @@
+---
+slug: test_result
+layout_name: application
+---
+
+<script>
+    console.log("Top of Test Result Form")
+</script> 
+
+{% render_form 'test_form' %}
+
+Third Party Api Value 2: for
+
+{% query_graph 'get_current_user_third_party_api_value', result_name: 'graph_current_user'  %}
+Third Party Api Value: for {{ graph_current_user.current_user.test_profile.third_party_api_value }}
+
+{% query_graph 'authorize_to_salesforce', result_name: 'authorize_response'  %}
+Third Party Api Value: for {{ authorize_response }}
+
+

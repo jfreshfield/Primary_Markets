@@ -1,0 +1,16 @@
+mutation persist_in_custom_attribute($user_id: ID!, $third_party_api_id: String!) {
+  user_update(
+    id: $user_id,
+    user: {
+      profiles: [
+        {
+          name: "test_profile"
+          values: { properties: [{ name: "third_party_api_value", value: $third_party_api_id }] }
+        }
+      ]
+    }
+    form_configuration_name: "callback_persist_in_custom_attribute"
+  ) {
+    id
+  }
+}

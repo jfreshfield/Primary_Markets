@@ -1,0 +1,50 @@
+---
+name: test_form
+resource: User
+configuration:
+  profiles:
+    default:
+      enabled:
+redirect_to: /salesforce
+async_callback_actions:
+  content: >
+    {% execute_query 'log', message: 'Top of Salesforce form' %}
+    {% execute_query 'authorize_to_salesforce', result_name: 'authorize_response' %}
+    {% if authorize_response.api_call_send.response.body %}
+      {% assign response = authorize_response.api_call_send.response.body | to_hash %}
+    {% endif %}
+    {% if response.access_token == blank %}
+      {% execute_query 'log', type: 'error', message: 'Authorization to salesforce failed!' %}
+    {% else %}
+      {% capture data_string %}
+        {
+              "access_token": "{{ response.access_token }}",
+              "instance_url": "{{ response.instance_url }}",
+        }
+      {% endcapture %}
+      {% assign data = data_string | to_hash %}
+      {% execute_query 'log', message: data %}
+      {% execute_query 'send_to_salesforce', data: data, template: "send_salesforce_request" %}
+    {% endif %}
+---
+
+<script>
+  console.log("Top of Test Form 2A")
+</script>  
+
+{% form url: "/salesforce" %}
+  {% comment %}
+  {% input 'email' %}
+  {% input 'password' %}
+  {% fields_for 'profiles' %}
+    {% fields_for 'test_profile' %}
+      {% input_field 'enabled', input_html-value: "1", as: 'hidden' %}
+    {% endfields_for %}
+  {% endfields_for %}
+  {% endcomment %}
+  
+  <p class="action">
+    {% submit 'Save', class: 'button-a' %}
+  </p>
+{% endform %}
+

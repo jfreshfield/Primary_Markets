@@ -1,0 +1,1558 @@
+---
+name: member
+resource: Session
+---
+<form onsubmit="return ValidatePage();" method="POST">
+   <!DOCTYPE html amp>
+    <html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="https://www.facebook.com/2008/fbml" amp>      
+      <body id="body" onload="Init();">    
+        <div id="offering-left-panel">
+          <div class="offering-left-group" style = "margin-top:-570px; margin-left:-150px;float:left;width:1000px;">
+            <div id="content-wrapper">
+                <div id="content">                      
+                    <h1>Become a Member</h1>
+                    <p>We welcome you to become a Member of PrimaryMarkets as a <a href="/sellers" style="color:#3697d3;">Seller</a>, <a href="/buyers" style="color:#3697d3;">Buyer</a> and&nbsp;<a href="/intermediaries" style="color:#3697d3;">Intermediary</a>            before we grant access to all our services.&nbsp;</p>
+                        <i class="fa fa-arrow-right" style="font-size:12px;color:#3697d3;"></i>&nbsp;&nbsp;A&nbsp;<a href="/sellers" style="color:#3697d3;">Seller</a> is able to list Illiquid, Tough-to-Trade, Unlisted, Off-Market Securities and Investments&nbsp;with PrimaryMarkets.&nbsp;
+                        </br><i class="fa fa-arrow-right" style="font-size:12px;color:#3697d3;"></i>&nbsp;&nbsp;A&nbsp;<a href="/buyers" style="color:#3697d3;">Buyer</a> is able to peruse and indicate interest for all Investment Listings with PrimaryMarkets.&nbsp;
+                        </br><i class="fa fa-arrow-right" style="font-size:12px;color:#3697d3;"></i>&nbsp;&nbsp;An <a href="/intermediaries" style="color:#3697d3;">Intermediary</a> is able to peruse all Investments for Sale with PrimaryMarkets as well as introduce our offerings
+                            to Sell-Side and Buy- &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Side clients.
+                    <p></br>If you wish to proceed to become a Member of PrimaryMarkets, please register by completing all of the following fields:</p>
+                    <div class="form-content-holder">
+                        <form name="catwebformform76705" method="post" onsubmit="return checkWholeForm76705(this)" enctype="multipart/form-data" action="/FormProcessv2.aspx?WebFormID=102538&OID=16325536&OTYPE=1&EID=0&CID=0&OPTIN=true&PageID=/thank-you-membership">
+                            <label for="FirstName" id="LabelFirstName">First Name *</label>
+                            <label style="display:none;color:red;" id="ErrorTextFirstName"> (Please enter First Name)</label>
+                            <label for="LastName" id="LabelLastName" style="margin-left:390px;">Surname *</label>
+                            <label style="display:none;color:red;" id="ErrorTextLastName"> (Please enter Last Name)</label>
+                            <div class="account-half" style="display:inline-block;">                                
+                                <input type="text" maxlength="255" style="width:462px;height:35px;" id="FirstName" name="FirstName" tabindex="1" onchange="return ValidateFirstName()">
+                                <input type="text" maxlength="255" style="width:462px;height:35px;margin-left:20px;" id="LastName" name="LastName" tabindex="2" onchange="return ValidateLastName()">
+                            </div>
+                            <div style="clear:both; "></div></br>
+
+                            <label for="EmailAddress" id="LabelEmailAddress">Email *</label>                            
+                            <label style="display:none;color:red;" id="ErrorTextEmailAddress"> (Please enter a valid Email Address)</label>
+                            <label for="MobilePhone" id="LabelMobilePhone" style="margin-left:429px;">Mobile Phone Number *</label>
+                            <label style="display:none;color:red;" id="ErrorTextMobilePhone"> (Please enter Mobile Phone Number)</label>
+                            <div class="account-half" style="display:inline-block">                                
+                                <input type="text" maxlength="255" style="width:462px;height:35px;" id="EmailAddress" name="EmailAddress" tabindex="3" onchange="return ValidateEMailAddress()">                                                        
+                                <input type="text" maxlength="255" style="width:462px;height:35px;margin-left:20px;" id="MobilePhone" name="MobilePhone" tabindex="4" onchange="return ValidateMobilePhone()">
+                            </div>
+                            <div style="clear:both; "></div></br>                                                      
+
+                            <label for="Country" id="LabelCountry">Country (Optional)</label>
+                            <label for="State" id="LabelState" style="margin-left:347px;">State (Optional)</label>                                
+                            <div class="account-half" style="display:inline-block">                                
+                                <select id="Country" name="Country" style=width:462px;height:35px;" tabindex="5"></select>
+                                <select name="State" id="State" style=width:462px;height:35px;margin-left:20px;" tabindex="6"></select>                                                                                        
+                            </div>                            
+                            
+                            <script src="{{ '/scripts/countries.js' | asset_url }}scripts/countries.js"></script>
+                            <script>populateCountries("Country", "State");</script>
+
+                            <div style="clear:both; "></div></br>
+                            <div class="account-half" style="display:none;">
+                                <label for="Company">Company</label>
+                                <input type="text" maxlength="255" class="cat_textbox" id="Company" name="Company" tabindex="5"> </div>
+                            <div class="account-half" style="display:none;">
+                                <label for="WorkAddress">Work Address</label>
+                                <input type="text" maxlength="500" class="cat_textbox" id="WorkAddress" name="WorkAddress" tabindex="9"> </div>
+                            <div style="clear:both; "></div>
+                            <div class="account-half" style="display:none;">
+                                <label for="WorkPhone">Work Phone Number</label>
+                                <input type="text" maxlength="255" class="cat_textbox" id="WorkPhone" name="WorkPhone" tabindex="6"> </div>
+                            <div class="account-half" style="display:none;">
+                                <label for="WorkCity">City</label>
+                                <input type="text" maxlength="255" class="cat_textbox" id="WorkCity" name="WorkCity" tabindex="10"> </div>
+                            <div style="clear:both; "></div>
+                            <div class="account-half" style="display:none;">
+                                <label for="WorkFax">Work Fax Number</label>
+                                <input type="text" maxlength="255" class="cat_textbox" id="WorkFax" name="WorkFax" tabindex="7"> </div>
+                            <div class="account-half" style="display:none;">
+                                <label for="WorkState">State</label>
+                                <input type="text" maxlength="255" class="cat_textbox" id="WorkState" name="WorkState" tabindex="11"> </div>
+                            <div style="clear:both; "></div>
+                            <div class="account-half" style="display:none;">
+                                <label for="WebAddress">Web Address</label>
+                                <input type="text" maxlength="255" class="cat_textbox" id="WebAddress" name="WebAddress" tabindex="8"> </div>
+                            <div class="account-half" style="display:none;">
+                                <label for="WorkZip">Zipcode/Postcode</label>
+                                <input type="text" maxlength="255" class="cat_textbox" id="WorkZip" name="WorkZip" tabindex="12"> </div>
+                            <div style="clear:both; "></div>
+                            <div class="account-half" style="display:none;">&nbsp;</div>
+                            <div class="account-half" style="display:none;">
+                                <label for="WorkCountry">Country</label>
+                                <select class="cat_dropdown" id="WorkCountry" name="WorkCountry" tabindex="13">
+                                    <option value=" ">-- Select Country --</option>
+                                    <option value="AF">AFGHANISTAN</option>
+                                    <option value="AX">ALAND ISLANDS</option>
+                                    <option value="AL">ALBANIA</option>
+                                    <option value="DZ">ALGERIA</option>
+                                    <option value="AS">AMERICAN SAMOA</option>
+                                    <option value="AD">ANDORRA</option>
+                                    <option value="AO">ANGOLA</option>
+                                    <option value="AI">ANGUILLA</option>
+                                    <option value="AQ">ANTARCTICA</option>
+                                    <option value="AG">ANTIGUA AND BARBUDA</option>
+                                    <option value="AR">ARGENTINA</option>
+                                    <option value="AM">ARMENIA</option>
+                                    <option value="AW">ARUBA</option>
+                                    <option selected="selected" value="AU">AUSTRALIA</option>
+                                    <option value="AT">AUSTRIA</option>
+                                    <option value="AZ">AZERBAIJAN</option>
+                                    <option value="BS">BAHAMAS</option>
+                                    <option value="BH">BAHRAIN</option>
+                                    <option value="BD">BANGLADESH</option>
+                                    <option value="BB">BARBADOS</option>
+                                    <option value="BY">BELARUS</option>
+                                    <option value="BE">BELGIUM</option>
+                                    <option value="BZ">BELIZE</option>
+                                    <option value="BJ">BENIN</option>
+                                    <option value="BM">BERMUDA</option>
+                                    <option value="BT">BHUTAN</option>
+                                    <option value="BO">BOLIVIA</option>
+                                    <option value="BA">BOSNIA AND HERZEGOVINA</option>
+                                    <option value="BW">BOTSWANA</option>
+                                    <option value="BV">BOUVET ISLAND</option>
+                                    <option value="BR">BRAZIL</option>
+                                    <option value="IO">BRITISH INDIAN OCEAN TERRITORY</option>
+                                    <option value="BN">BRUNEI DARUSSALAM</option>
+                                    <option value="BG">BULGARIA</option>
+                                    <option value="BF">BURKINA FASO</option>
+                                    <option value="BI">BURUNDI</option>
+                                    <option value="KH">CAMBODIA</option>
+                                    <option value="CM">CAMEROON</option>
+                                    <option value="CA">CANADA</option>
+                                    <option value="CV">CAPE VERDE</option>
+                                    <option value="KY">CAYMAN ISLANDS</option>
+                                    <option value="CF">CENTRAL AFRICAN REPUBLIC</option>
+                                    <option value="TD">CHAD</option>
+                                    <option value="CL">CHILE</option>
+                                    <option value="CN">CHINA</option>
+                                    <option value="CX">CHRISTMAS ISLAND</option>
+                                    <option value="CC">COCOS (KEELING) ISLANDS</option>
+                                    <option value="CO">COLOMBIA</option>
+                                    <option value="KM">COMOROS</option>
+                                    <option value="CG">CONGO</option>
+                                    <option value="CD">CONGO, THE DEMOCRATIC REPUBLIC OF THE</option>
+                                    <option value="CK">COOK ISLANDS</option>
+                                    <option value="CR">COSTA RICA</option>
+                                    <option value="CI">CÔTE D'IVOIRE</option>
+                                    <option value="HR">CROATIA</option>
+                                    <option value="CU">CUBA</option>
+                                    <option value="CY">CYPRUS</option>
+                                    <option value="CZ">CZECH REPUBLIC</option>
+                                    <option value="DK">DENMARK</option>
+                                    <option value="DJ">DJIBOUTI</option>
+                                    <option value="DM">DOMINICA</option>
+                                    <option value="DO">DOMINICAN REPUBLIC</option>
+                                    <option value="EC">ECUADOR</option>
+                                    <option value="EG">EGYPT</option>
+                                    <option value="SV">EL SALVADOR</option>
+                                    <option value="GQ">EQUATORIAL GUINEA</option>
+                                    <option value="ER">ERITREA</option>
+                                    <option value="EE">ESTONIA</option>
+                                    <option value="ET">ETHIOPIA</option>
+                                    <option value="FK">FALKLAND ISLANDS (MALVINAS)</option>
+                                    <option value="FO">FAROE ISLANDS</option>
+                                    <option value="FJ">FIJI</option>
+                                    <option value="FI">FINLAND</option>
+                                    <option value="FR">FRANCE</option>
+                                    <option value="GF">FRENCH GUIANA</option>
+                                    <option value="PF">FRENCH POLYNESIA</option>
+                                    <option value="TF">FRENCH SOUTHERN TERRITORIES</option>
+                                    <option value="GA">GABON</option>
+                                    <option value="GM">GAMBIA</option>
+                                    <option value="GE">GEORGIA</option>
+                                    <option value="DE">GERMANY</option>
+                                    <option value="GH">GHANA</option>
+                                    <option value="GI">GIBRALTAR</option>
+                                    <option value="GR">GREECE</option>
+                                    <option value="GL">GREENLAND</option>
+                                    <option value="GD">GRENADA</option>
+                                    <option value="GP">GUADELOUPE</option>
+                                    <option value="GU">GUAM</option>
+                                    <option value="GT">GUATEMALA</option>
+                                    <option value="GG">GUERNSEY</option>
+                                    <option value="GN">GUINEA</option>
+                                    <option value="GW">GUINEA-BISSAU</option>
+                                    <option value="GY">GUYANA</option>
+                                    <option value="HT">HAITI</option>
+                                    <option value="HM">HEARD ISLAND AND MCDONALD ISLANDS</option>
+                                    <option value="VA">HOLY SEE (VATICAN CITY STATE)</option>
+                                    <option value="HN">HONDURAS</option>
+                                    <option value="HK">HONG KONG</option>
+                                    <option value="HU">HUNGARY</option>
+                                    <option value="IS">ICELAND</option>
+                                    <option value="IN">INDIA</option>
+                                    <option value="ID">INDONESIA</option>
+                                    <option value="IR">IRAN, ISLAMIC REPUBLIC OF</option>
+                                    <option value="IQ">IRAQ</option>
+                                    <option value="IE">IRELAND</option>
+                                    <option value="IL">ISRAEL</option>
+                                    <option value="IT">ITALY</option>
+                                    <option value="JM">JAMAICA</option>
+                                    <option value="JP">JAPAN</option>
+                                    <option value="JE">JERSEY</option>
+                                    <option value="JO">JORDAN</option>
+                                    <option value="KZ">KAZAKHSTAN</option>
+                                    <option value="KE">KENYA</option>
+                                    <option value="KI">KIRIBATI</option>
+                                    <option value="KP">KOREA (NORTH)</option>
+                                    <option value="KR">KOREA,(SOUTH)</option>
+                                    <option value="KW">KUWAIT</option>
+                                    <option value="KG">KYRGYZSTAN</option>
+                                    <option value="LA">LAO PEOPLE'S DEMOCRATIC REPUBLIC</option>
+                                    <option value="LV">LATVIA</option>
+                                    <option value="LB">LEBANON</option>
+                                    <option value="LS">LESOTHO</option>
+                                    <option value="LR">LIBERIA</option>
+                                    <option value="LY">LIBYAN ARAB JAMAHIRIYA</option>
+                                    <option value="LI">LIECHTENSTEIN</option>
+                                    <option value="LT">LITHUANIA</option>
+                                    <option value="LU">LUXEMBOURG</option>
+                                    <option value="MO">MACAO</option>
+                                    <option value="MK">MACEDONIA, THE FORMER YUGOSLAV REPUBLIC OF</option>
+                                    <option value="MG">MADAGASCAR</option>
+                                    <option value="MW">MALAWI</option>
+                                    <option value="MY">MALAYSIA</option>
+                                    <option value="MV">MALDIVES</option>
+                                    <option value="ML">MALI</option>
+                                    <option value="MT">MALTA</option>
+                                    <option value="MH">MARSHALL ISLANDS</option>
+                                    <option value="MQ">MARTINIQUE</option>
+                                    <option value="MR">MAURITANIA</option>
+                                    <option value="MU">MAURITIUS</option>
+                                    <option value="YT">MAYOTTE</option>
+                                    <option value="MX">MEXICO</option>
+                                    <option value="FM">MICRONESIA, FEDERATED STATES OF</option>
+                                    <option value="MD">MOLDOVA, REPUBLIC OF</option>
+                                    <option value="MC">MONACO</option>
+                                    <option value="MN">MONGOLIA</option>
+                                    <option value="ME">MONTENEGRO</option>
+                                    <option value="MS">MONTSERRAT</option>
+                                    <option value="MA">MOROCCO</option>
+                                    <option value="MZ">MOZAMBIQUE</option>
+                                    <option value="MM">MYANMAR</option>
+                                    <option value="NA">NAMIBIA</option>
+                                    <option value="NR">NAURU</option>
+                                    <option value="NP">NEPAL</option>
+                                    <option value="NL">NETHERLANDS</option>
+                                    <option value="AN">NETHERLANDS ANTILLES</option>
+                                    <option value="NC">NEW CALEDONIA</option>
+                                    <option value="NZ">NEW ZEALAND</option>
+                                    <option value="NI">NICARAGUA</option>
+                                    <option value="NE">NIGER</option>
+                                    <option value="NG">NIGERIA</option>
+                                    <option value="NU">NIUE</option>
+                                    <option value="NF">NORFOLK ISLAND</option>
+                                    <option value="MP">NORTHERN MARIANA ISLANDS</option>
+                                    <option value="NO">NORWAY</option>
+                                    <option value="OM">OMAN</option>
+                                    <option value="PK">PAKISTAN</option>
+                                    <option value="PW">PALAU</option>
+                                    <option value="PS">PALESTINIAN TERRITORY, OCCUPIED</option>
+                                    <option value="PA">PANAMA</option>
+                                    <option value="PG">PAPUA NEW GUINEA</option>
+                                    <option value="PY">PARAGUAY</option>
+                                    <option value="PE">PERU</option>
+                                    <option value="PH">PHILIPPINES</option>
+                                    <option value="PN">PITCAIRN</option>
+                                    <option value="PL">POLAND</option>
+                                    <option value="PT">PORTUGAL</option>
+                                    <option value="PR">PUERTO RICO</option>
+                                    <option value="QA">QATAR</option>
+                                    <option value="RE">REUNION</option>
+                                    <option value="RO">ROMANIA</option>
+                                    <option value="RU">RUSSIAN FEDERATION</option>
+                                    <option value="RW">RWANDA</option>
+                                    <option value="BL">SAINT BARTHÉLEMY</option>
+                                    <option value="SH">SAINT HELENA</option>
+                                    <option value="KN">SAINT KITTS AND NEVIS</option>
+                                    <option value="LC">SAINT LUCIA</option>
+                                    <option value="MF">SAINT MARTIN</option>
+                                    <option value="PM">SAINT PIERRE AND MIQUELON</option>
+                                    <option value="VC">SAINT VINCENT AND THE GRENADINES</option>
+                                    <option value="WS">SAMOA</option>
+                                    <option value="SM">SAN MARINO</option>
+                                    <option value="ST">SAO TOME AND PRINCIPE</option>
+                                    <option value="SA">SAUDI ARABIA</option>
+                                    <option value="SN">SENEGAL</option>
+                                    <option value="RS">SERBIA</option>
+                                    <option value="CS">SERBIA AND MONTENEGRO</option>
+                                    <option value="SC">SEYCHELLES</option>
+                                    <option value="SL">SIERRA LEONE</option>
+                                    <option value="SG">SINGAPORE</option>
+                                    <option value="SK">SLOVAKIA</option>
+                                    <option value="SI">SLOVENIA</option>
+                                    <option value="SB">SOLOMON ISLANDS</option>
+                                    <option value="SO">SOMALIA</option>
+                                    <option value="ZA">SOUTH AFRICA</option>
+                                    <option value="GS">SOUTH GEORGIA AND THE SOUTH SANDWICH ISLANDS</option>
+                                    <option value="ES">SPAIN</option>
+                                    <option value="LK">SRI LANKA</option>
+                                    <option value="SD">SUDAN</option>
+                                    <option value="SR">SURINAME</option>
+                                    <option value="SJ">SVALBARD AND JAN MAYEN</option>
+                                    <option value="SZ">SWAZILAND</option>
+                                    <option value="SE">SWEDEN</option>
+                                    <option value="CH">SWITZERLAND</option>
+                                    <option value="SY">SYRIAN ARAB REPUBLIC</option>
+                                    <option value="TW">TAIWAN</option>
+                                    <option value="TJ">TAJIKISTAN</option>
+                                    <option value="TZ">TANZANIA, UNITED REPUBLIC OF</option>
+                                    <option value="TH">THAILAND</option>
+                                    <option value="TL">TIMOR-LESTE</option>
+                                    <option value="TG">TOGO</option>
+                                    <option value="TK">TOKELAU</option>
+                                    <option value="TO">TONGA</option>
+                                    <option value="TT">TRINIDAD AND TOBAGO</option>
+                                    <option value="TN">TUNISIA</option>
+                                    <option value="TR">TURKEY</option>
+                                    <option value="TM">TURKMENISTAN</option>
+                                    <option value="TC">TURKS AND CAICOS ISLANDS</option>
+                                    <option value="TV">TUVALU</option>
+                                    <option value="UG">UGANDA</option>
+                                    <option value="UA">UKRAINE</option>
+                                    <option value="AE">UNITED ARAB EMIRATES</option>
+                                    <option value="GB">UNITED KINGDOM</option>
+                                    <option value="US">UNITED STATES</option>
+                                    <option value="UM">UNITED STATES MINOR OUTLYING ISLANDS</option>
+                                    <option value="UY">URUGUAY</option>
+                                    <option value="UZ">UZBEKISTAN</option>
+                                    <option value="VU">VANUATU</option>
+                                    <option value="VE">VENEZUELA</option>
+                                    <option value="VN">VIETNAM</option>
+                                    <option value="VG">VIRGIN ISLANDS, BRITISH</option>
+                                    <option value="VI">VIRGIN ISLANDS, U.S.</option>
+                                    <option value="WF">WALLIS AND FUTUNA</option>
+                                    <option value="EH">WESTERN SAHARA</option>
+                                    <option value="YE">YEMEN</option>
+                                    <option value="ZM">ZAMBIA</option>
+                                    <option value="ZW">ZIMBABWE</option>
+                                </select>
+                            </div>
+                            <div style="clear:both; "></div>
+                            <div class="account-full">
+                                <h2 id="MembershipTypeHeading" style="display:inline;">Membership Type *</h2>
+                                <label style="display:none;color:red;" id="ErrorTextMembershipType"> (Membership Type must be entered)</label>
+                                <div style="clear:both;"></div></br>  
+
+                                <div class="account-half" style="margin-bottom:0px;">
+                                    <input name="MembershipType" id="MembershipTypeBuyer" value="Buyer" onchange="checkBuyer()" type="checkbox"> Buyer
+                                </div>
+
+                                <div id="buyertype" style="margin-bottom:0px; display: none;" class="account-half"> 
+                                    <div style="margin-left:491px;">
+                                        <label id="BuyerTypeHeading">Buyer Type *</label>                                        
+                                        <label style="display:none;color:red;" id="ErrorTextBuyerType"> (Buyer Type must be entered)</label>
+                                        <br />
+                                        <input name="BuyerTypeValue" id="BuyerTypeValue_Wholesale" value="Wholesale / Sophisticated" type="radio" onchange="ValidateBuyerType()"> Wholesale / Sophisticated
+                                        <br />
+                                        <input name="BuyerTypeValue" id="BuyerTypeValue_Professional" value="Professional" type="radio" onchange="ValidateBuyerType()"> Professional
+                                        <br />
+                                        <input name="BuyerTypeValue" id="BuyerTypeValue_Accredited" value="Accredited" type="radio" onchange="ValidateBuyerType()"> Accredited
+                                        <br />
+                                        <input name="BuyerTypeValue" id="BuyerTypeValue_Qualified" value="Qualified Institutional" type="radio" onchange="ValidateBuyerType()"> Qualified Institutional
+                                    </div>    
+                                </div>
+                                <div class="account-full" style="margin-bottom:0px;">
+                                    <input name="MembershipType" id="MembershipTypeSeller" value="Seller" onchange="checkSeller()" type="checkbox"> Seller </div>
+                                <div class="account-half" style="margin-bottom:0px;">
+                                    <input name="MembershipType" id="MembershipTypeIntermediary" value="Intermediary" onchange="checkIntermediary()" type="checkbox"> Intermediary </div>
+                                <div style="margin-bottom:0px;  display: none;" id="intertype" class="account-half">
+                                    <div style="margin-left:492px;width:473px;height:35px;">                                
+                                        <label for="IntermediaryType" id="IntermediaryTypeHeading">Intermediary Type *</label>
+                                        <label style="display:none;color:red;" id="ErrorTextIntermediaryType"> (Intermediary Type must be entered)</label>
+                                        <br />
+                                        <select name="IntermediaryType" id="IntermediaryType" class="cat_dropdown" style="margin-bottom:0px!important;" onchange="ValidateIntermediaryType()">
+                                            <option value=" ">-- Please select --</option>
+                                            <option value="Institutional / Retail Broker">Institutional / Retail Broker</option>
+                                            <option value="Broker-Dealer">Broker-Dealer</option>
+                                            <option value="Venture Capital / Private Equity / Limited Partnerships">Venture Capital / Private Equity / Limited Partnerships</option>
+                                            <option value="Wealth Manager">Wealth Manager</option>
+                                            <option value="Corporate Advisor">Corporate Advisor</option>
+                                            <option value="Lawyer">Lawyer</option>
+                                            <option value="Accountant">Accountant</option>
+                                            <option value="Administrator / Liquidator">Administrator / Liquidator</option>
+                                            <option value="Other">Other</option>
+                                        </select>
+                                    </div>
+                            </div>
+                            <div style="clear:both; "></div>
+                            <div class="account-full">
+                                <h2></br>Preferences</h2>
+                                <label for="AssetTypesOfInterest">Asset Types of Interest</label>
+                                <br />
+                                <input name="" type="checkbox" value="" id="AssetTypesSelectAll" onchange="AssetTypes()" style="margin-bottom:10px;"> Select all
+                                <br />
+                                <input name="AssetTypesOfInterest" id="AssetTypesOfInterest_Securities" value="Securities" type="checkbox"> Securities
+                                <br />
+                                <input name="AssetTypesOfInterest" id="AssetTypesOfInterest_Funds" value="Funds" type="checkbox"> Funds
+                                <br />
+                                <input name="AssetTypesOfInterest" id="AssetTypesOfInterest_FixedIncome" value="Fixed Income" type="checkbox"> Fixed Income
+                                <br />
+                                <input name="AssetTypesOfInterest" id="AssetTypesOfInterest_Commercial" value="Commercial" type="checkbox"> Commercial
+                                <br />
+                                <input name="AssetTypesOfInterest" id="AssetTypesOfInterest_DirectAssets" value="Direct Assets" type="checkbox"> Direct Assets
+                                <br />
+                                <input type="checkbox" name="AssetTypesOfInterest" id="AssetTypesOfInterest_Crypto" value="Crypto"> Crypto </div>
+                            <div style="clear:both; "></div>
+                            <div class="account-full">
+                                <label></br>Asset Industry</label>
+                                <br />
+                                <input name="" type="checkbox" value="" id="AssetIndustrySelectAll" onchange="AssetIndustry()" style="margin-bottom:10px;"> Select all
+                                <br />
+
+                                <div class="account-half" style="display:inline-block;" style="width:1000px;">
+                                    <div class="account-half" style="display:inline-block;" style="width:1000px;">
+                                        <input type="checkbox" name="AssetIndustry_Agriculture" id="AssetIndustry_Agriculture" value="Agriculture Forestry and Fishing"> Agriculture Forestry and Fishing                                                                                                                       
+                                        <input type="checkbox" name="AssetIndustry_ProfessionalServices" id="AssetIndustry_ProfessionalServices" value="Professional Services" style="margin-left:270px;"> Professional Services
+                                    </div>  
+                                    <br />  
+                                    <div class="account-half" style="display:inline-block;" style="width:1000px;">
+                                        <input type="checkbox" name="AssetIndustry_Banking" id="AssetIndustry_Banking" value="Banking Financial Services and Insurance"> Banking Financial Services and Insurance
+                                         <input type="checkbox" name="AssetIndustry_Resources" id="AssetIndustry_Resources" value="Resources Metals and Mining" style="margin-left:206px;"> Resources Metals and Mining
+                                    </div>    
+                                    <br />
+                                    <div class="account-half" style="display:inline-block;" style="width:1000px;">
+                                        <input type="checkbox" name="AssetIndustry_CommunicationMedia" id="AssetIndustry_CommunicationMedia" value="Communication Media and Arts"> Communication Media and Arts
+                                        <input type="checkbox" name="AssetIndustry_RealEstate" id="AssetIndustry_RealEstate" value="Real Estate" style="margin-left:270px;"> Real Estate
+                                    </div>
+                                    <br />
+                                    <div class="account-half" style="display:inline-block;" style="width:1000px;">
+                                        <input type="checkbox" name="AssetIndustry_Construction" id="AssetIndustry_Construction" value="Construction Industrials and Materials"> Construction Industrials and Materials
+                                        <input type="checkbox" name="AssetIndustry_RetailProducts" id="AssetIndustry_RetailProducts" value="Retail Products and Services"  style="margin-left:225px;"> Retail Products and Services
+                                    </div>                                        
+                                    <br />
+                                    <div class="account-half" style="display:inline-block;" style="width:1000px;">
+                                        <input type="checkbox" name="AssetIndustry_EducationAndTraining" id="AssetIndustry_EducationAndTraining" value="Education and Training"> Education and Training
+                                        <input type="checkbox" name="AssetIndustry_Hospitality" id="AssetIndustry_Hospitality" value="Restaurants Hotels and Tourism" style="margin-left:331px;"> Restaurants Hotels and Tourism
+                                    </div>
+                                    <br />
+                                    <div class="account-half" style="display:inline-block;" style="width:1000px;">
+                                        <input type="checkbox" name="AssetIndustry_EnergyAndUtilities" id="AssetIndustry_EnergyAndUtilities" value="Energy and Utilities"> Energy and Utilities
+                                        <input type="checkbox" name="AssetIndustry_Transportation" id="AssetIndustry_Transportation" value="Transportation and Logistics" style="margin-left:357px;"> Transportation and Logistics
+                                     </div>   
+                                    <br />
+                                    <div class="account-half" style="display:inline-block;" style="width:1000px;">
+                                        <input type="checkbox" name="AssetIndustry_Healthcare" id="AssetIndustry_Healthcare" value="Healthcare and Medical"> Healthcare and Medical
+                                        <input type="checkbox" name="AssetIndustry_WholesaleProducts" id="AssetIndustry_WholesaleProducts" value="Wholesale Products and Services" style="margin-left:327px;"> Wholesale Products and Services
+                                    </div>    
+                                    <br />                                    
+                                    <div class="account-half" style="display:inline-block;" style="width:1000px;">
+                                        <input type="checkbox" name="AssetIndustry_InformationTechnology" id="AssetIndustry_InformationTechnology" value="Information Technology"> Information Technology </div>
+                                        <input type="checkbox" name="AssetIndustry_Other" id="AssetIndustry_Other" value="Other" style="margin-left:325px;" onchange="AssetIndustryOther()"> Other
+                                    </div>    
+                                    <br />                                                                    
+                                    <div style="display:none;" class="industry-other">
+                                        <label for="CAT_Custom_20145555_194899" style="margin-left:513px;">If Other, please specify:</label>
+                                        <br />
+                                        <input type="text" maxlength="4000" name="AssetIndustry_Other_Text" id="AssetIndustry_Other_Text" style="margin-left:513px;width:473px;height:35px;">
+                                    </div>                            
+                            </div>
+                            <div class="account-full">
+
+                        <style>                            
+                            .more {
+                                background:url({{ '/images/icon-question-mark.png' | asset_url}}images/icon-question-mark.png) no-repeat;
+                                height:15px;
+                                width:15px;
+                                display:inline-block;
+                            }
+                                
+                            .tooltip{
+                                display: inline;
+                                position: relative;
+                                font-weight:300!important;
+                            }
+                            
+                            .tooltip:hover:after{
+                                background: #333;
+                                background: rgba(0,0,0,.8);
+                                border-radius: 10px;
+                                bottom: 26px;
+                                color: #fff;
+                                content: attr(title);
+                                left: -100%;
+                                padding: 5px 15px;
+                                position: absolute;
+                                z-index: 98;
+                                width: 180px;
+                            }
+                            
+                            .tooltip:hover:before{
+                                border: solid;
+                                border-color: #333 transparent;
+                                border-width: 6px 6px 0 6px;
+                                bottom: 20px;
+                                content: "";
+                                left: 50%;
+                                position: absolute;
+                                z-index: 99;
+                            }
+                            
+                                @media screen and (max-width: 1000px){ 
+                                        .tooltip:hover:after{
+                                            left:auto;
+                                            right:0%;
+                                            bottom:24px;
+                                        }
+                                        
+                                        .tooltip:hover:before{
+                                            left:auto;
+                                            right:12px;
+                                            bottom:18px;
+                                        }
+                                        
+                                        .more {
+                                            display:block;
+                                            float:right;
+                                            margin-bottom: 5px;
+                                        }
+                                        
+                                        .tooltip{
+                                            display: inline-block;
+                                            float:right;
+                                            width:15px;
+                                            position: relative;
+                                        }
+
+                                }                            
+   
+                                @media screen and (max-width: 640px) {
+                                    .account-half {
+                                        width: 100%;
+                                        padding: 0px;
+                                    }
+                                }
+                            </style>
+                            
+                            <br />    
+                            <label>I wish to have access to the private Ecosystem <a title="PrimaryMarkets provides secure, controlled and private trading hubs for security holders of companies and funds." class="tooltip"><span class="more" title=""></span></a> </label>
+                            <br />                            
+                            <input type="checkbox" name="Ecosystem_AIRR" id="Ecosystem_AIRR" value="AIRR" onchange="return AIRRvalidate()" /> AIRR <span style="color:#999;">(Subject to Board Approval)</span>  <a title="Access to AIRR is subject to the Board Approval. Our Team will be in touch with you to confirm your access." class="tooltip"><span class="more" title=""></span></a>
+                            <br />                            
+                            <input type="checkbox" name="Ecosystem_Blooms" id="Ecosystem_Blooms" value="Blooms the Chemist" onchange="return Bloomsvalidate()" /> Blooms the Chemist <span style="color:#999;">(Subject to Board Approval)</span>  <a title="Access to Blooms the Chemist is subject to the Board Approval. Our Team will be in touch with you to confirm your access." class="tooltip"><span class="more" title=""></span></a>                
+                            <br />
+                            <input type="checkbox" name="Ecosystem_BlackWall" id="Ecosystem_BlackWall" value="BlackWall" /> BlackWall                            
+                            <br />
+                            <input type="checkbox" name="Ecosystem_Haoma" id="Ecosystem_Haoma" value="Haoma Mining" /> Haoma Mining
+                            <br />
+                            <input type="checkbox" name="Ecosystem_MoneyTech" id="Ecosystem_MoneyTech" value="Moneytech" /> Moneytech
+                            <br />
+                            <input type="checkbox" name="Ecosystem_PlanetInnovation" id="Ecosystem_PlanetInnovation" value="Planet Innovation" /> Planet Innovation
+                            <br />
+                            <input type="checkbox" name="Ecosystem_Pelathon" id="Ecosystem_Pelathon" value="Pelathon" /> Pelathon
+                            <br />
+                            <input type="checkbox" name="Ecosystem_Tyro" id="Ecosystem_Tyro" value="Tyro" /> Tyro
+                                
+                            </div>
+                            <label for="InvestmentAmountPerDeal" id="LabelInvestmentAmountPerDeal"></br>Investment Amount Per Deal *</label>
+                            <label style="display:none;color:red;" id="ErrorTextInvestmentAmountPerDeal"> (Please select amount)</label>
+                            <label for="InvestmentAmountPerYear" id="LabelInvestmentAmountPerYear" style="margin-left:270px;">Investments Per Year *</label>
+                            <label style="display:none;color:red;" id="ErrorTextInvestmentAmountPerYear"> (Please select amount)</label>
+                            <div class="account-half" style="display:inline-block;">   
+                                <select name="InvestmentAmountPerDeal" id="InvestmentAmountPerDeal" style="width:473px;height:30px;" onchange="ValidateInvestmentAmountPerDeal()">
+                                    <option value=" ">-- Please select --</option>
+                                    <option value="Less than 50K">Less than 50K</option>
+                                    <option value="50K - 100K">50K - 100K</option>
+                                    <option value="100K - 250K">100K - 250K</option>
+                                    <option value="250K Plus">250K Plus</option>
+                                </select>
+                            
+                                <select name="InvestmentAmountPerYear" id="InvestmentAmountPerYear" style="width:473px;height:30px;margin-left:20px;" onchange="ValidateInvestmentsPerYear()">
+                                    <option value=" ">-- Please select --</option>
+                                    <option value="1-2">1-2</option>
+                                    <option value="3-5">3-5</option>
+                                    <option value="6%2b">6 Plus</option>
+                                </select>
+                            </div>
+
+                            <div style="clear:both; "></div></br>
+                            <div class="account-full"> <strong>Important Disclosure:</strong>
+                                <br /> Please read <a href="/FAQRetrieve.aspx?ID=57404" target="_blank" style="color:#3697d3;">FAQ Section of ASIC Class Order 02/273</a> and the implications to
+                                you by becoming a Member (refer Class Order Declaration).
+                                <br />
+                                <br />
+                                <input name="MembersAgreement" id="MembersAgreement" value="1" type="checkbox"  onchange="ValidateMembersAgreement()">
+                                <label for="MembersAgreement" id="LabelMembersAgreement">I confirm that I am a sophisticated/wholesale investor and I have read the relevant&nbsp;<a href="/legal" target="_blank" style="color:#3697d3;font-weight:700;">Members Agreement</a>,&nbsp;
+                                    <a href="/LiteratureRetrieve.aspx?ID=140585"></a><a href="{{ '/pdf/Privacy_Policy_PrimaryMarkets.pdf' | asset_url}}pdf/Privacy_Policy_PrimaryMarkets.pdf" target="_blank" style="color:#3697d3;font-weight:700;">Privacy</a>,
+                                    <a href="/LiteratureRetrieve.aspx?ID=140587"></a><a href="{{ 'Website_Terms_and_Conditions_16_3_16.pdf' | asset_url}}pdf/Website_Terms_and_Conditions_16_3_16.pdf" target="_blank" style="color:#3697d3;font-weight:700;">Terms & Conditions</a> and <a href="{{ 'ASIC_Class_Order_Declaration_Compliance_30_3_16.pdf' | asset_url}}pdf/ASIC_Class_Order_Declaration_Compliance_30_3_16.pdf" target="_blank" style="color:#3697d3;font-weight:700;">ASIC Class Order Declaration 02/273</a>                        (as all disclosed in the PrimaryMarkets’ “Legal” webpage for becoming a Member of PrimaryMarkets). I irrevocably agree to be bound
+                                    by the provisions of each of those documents as evidenced by my ticking the adjoining box.*
+                                </label>
+                                <label style="display:none;color:red;" id="ErrorTextMembersAgreement"> (Please tick the box to confirm)</label>
+                            </div>
+                            <div class="account-full">
+                                </br><label id="LabelProveNotABot">Prove you're not a robot *</label>
+                                <label style="display:none;color:red;" id="ErrorTextProveNotABot"> (Please tick the box to confirm)</label>
+                                <div id="Recaptcha" class="g-recaptcha" data-callback="ValidateNotARobot" data-sitekey="6LcGXxsUAAAAALhWpOesJevjsD2KnvmZbTZADnIJ"></div>                                                                                                                                                                                                                                                                             
+                            </div>
+
+                            <div class="account-full"> <div style="display: none">
+                                <input type="text" name="s_content" id="s_content" class="cat_textbox" />
+                                <input type="text" name="s_summary" id="s_summary" class="cat_textbox" value="8273c0f1aa66429bb73f92edb3f8eb3d" />
+                            </div>
+
+                            <input name="Username" id="Username" class="cat_textbox" maxlength="255" type="text" style="display:none;">
+                            <input name="CampaignList_58583" id="CampaignList_58583" style="display:none;" type="checkbox">
+                            <input name="CampaignList_58584" id="CampaignList_58584" style="display:none;" type="checkbox">
+                            <input name="CampaignList_58585" id="CampaignList_58585" style="display:none;" type="checkbox">
+                            <input name="CampaignList_56218" value="true" type="hidden">
+                            </br><input name="submit" class="cat_button" id="catwebformbutton" value="Submit" type="submit"> </div>
+                            <script type="text/javascript">
+                                function AssetIndustry() {
+                                    if (document.getElementById("AssetIndustrySelectAll").checked == true) {
+                                        document.getElementById("AssetIndustry_Agriculture").checked = true;
+                                        document.getElementById("AssetIndustry_ProfessionalServices").checked = true;
+                                        document.getElementById("AssetIndustry_Banking").checked = true;
+                                        document.getElementById("AssetIndustry_Resources").checked = true;
+                                        document.getElementById("AssetIndustry_CommunicationMedia").checked = true;
+                                        document.getElementById("AssetIndustry_RealEstate").checked = true;
+                                        document.getElementById("AssetIndustry_Construction").checked = true;
+                                        document.getElementById("AssetIndustry_RetailProducts").checked = true;
+                                        document.getElementById("AssetIndustry_EducationAndTraining").checked = true;
+                                        document.getElementById("AssetIndustry_Hospitality").checked = true;
+                                        document.getElementById("AssetIndustry_EnergyAndUtilities").checked = true;
+                                        document.getElementById("AssetIndustry_Transportation").checked = true;
+                                        document.getElementById("AssetIndustry_Healthcare").checked = true;
+                                        document.getElementById("AssetIndustry_WholesaleProducts").checked = true;
+                                        document.getElementById("AssetIndustry_InformationTechnology").checked = true;
+                                    } else {
+                                        document.getElementById("AssetIndustry_Agriculture").checked = false;
+                                        document.getElementById("AssetIndustry_ProfessionalServices").checked = false;
+                                        document.getElementById("AssetIndustry_Banking").checked = false;
+                                        document.getElementById("AssetIndustry_Resources").checked = false;
+                                        document.getElementById("AssetIndustry_CommunicationMedia").checked = false;
+                                        document.getElementById("AssetIndustry_RealEstate").checked = false;
+                                        document.getElementById("AssetIndustry_Construction").checked = false;
+                                        document.getElementById("AssetIndustry_RetailProducts").checked = false;
+                                        document.getElementById("AssetIndustry_EducationAndTraining").checked = false;
+                                        document.getElementById("AssetIndustry_Hospitality").checked = false;
+                                        document.getElementById("AssetIndustry_EnergyAndUtilities").checked = false;
+                                        document.getElementById("AssetIndustry_Transportation").checked = false;
+                                        document.getElementById("AssetIndustry_Healthcare").checked = false;
+                                        document.getElementById("AssetIndustry_WholesaleProducts").checked = false;
+                                        document.getElementById("AssetIndustry_InformationTechnology").checked = false;
+                                    }
+                                }
+
+                                function AssetIndustryOther() {
+                                    if (document.getElementById("AssetIndustry_Other").checked == true) {
+                                        $(".industry-other").show();
+                                    } else $(".industry-other").hide();
+                                }
+
+                                function AssetTypes() {                                    
+                                    if (document.getElementById("AssetTypesSelectAll").checked == true) {
+                                        document.getElementById("AssetTypesOfInterest_Securities").checked = true;
+                                        document.getElementById("AssetTypesOfInterest_Funds").checked = true;
+                                        document.getElementById("AssetTypesOfInterest_FixedIncome").checked = true;
+                                        document.getElementById("AssetTypesOfInterest_Commercial").checked = true;
+                                        document.getElementById("AssetTypesOfInterest_DirectAssets").checked = true;
+                                        document.getElementById("AssetTypesOfInterest_Crypto").checked = true;
+                                    } else {
+                                        document.getElementById("AssetTypesOfInterest_Securities").checked = false;
+                                        document.getElementById("AssetTypesOfInterest_Funds").checked = false;
+                                        document.getElementById("AssetTypesOfInterest_FixedIncome").checked = false;
+                                        document.getElementById("AssetTypesOfInterest_Commercial").checked = false;
+                                        document.getElementById("AssetTypesOfInterest_DirectAssets").checked = false;
+                                        document.getElementById("AssetTypesOfInterest_Crypto").checked = false;
+                                    }    
+                                }
+
+                                function checkBuyer() {                                
+                                    ValidateMembershipType();
+
+                                    if (document.getElementById("MembershipTypeBuyer").checked == true) {                                        
+                                        $("#buyertype").slideDown();
+                                        document.getElementById("CampaignList_58583").checked = true;
+                                    } else {
+                                        document.getElementById("CampaignList_58583").checked = false;
+                                        $("#buyertype").slideUp();
+                                        catwebformform76705.BuyerTypeValue[0].checked = false;
+                                        catwebformform76705.BuyerTypeValue[1].checked = false;
+                                    }                                    
+                                }
+
+
+                                function checkSeller() {
+                                    ValidateMembershipType();
+
+                                    if (document.getElementById("CAT_Custom_20044086_194899_1").checked == true) {
+                                        document.getElementById("CampaignList_58584").checked = true;
+                                    } else {
+                                        document.getElementById("CampaignList_58584").checked = false;
+                                    }
+                                }
+
+                                function checkIntermediary() {
+                                    ValidateMembershipType();
+
+                                    if (document.getElementById("MembershipTypeIntermediary").checked == true) {
+                                        $("#intertype").slideDown();
+                                        document.getElementById("CampaignList_58585").checked = true;
+                                    } else {
+                                        $("#intertype").slideUp();
+                                        document.getElementById("CampaignList_58585").checked = false;
+                                        document.getElementById("IntermediaryType").selectedIndex = 0;
+                                    }
+                                }
+
+                                //<![CDATA[
+                                var submitcount76705 = 0;
+
+                                /*function checkWholeForm76705(theForm) {
+                                        var why = "";
+
+                                        document.getElementById("Username").value = document.getElementById("EmailAddress").value;
+                                        if (theForm.FirstName) why += isEmpty(theForm.FirstName.value, "First Name");
+                                        if (theForm.LastName) why += isEmpty(theForm.LastName.value, "Last Name");
+                                        if (theForm.EmailAddress) why += checkEmail(theForm.EmailAddress.value);
+
+                                        if (document.getElementById("MembershipTypeBuyer").checked == true) {
+
+                                            if (catwebformform76705.CAT_Custom_20045635_194899[0].checked == false && catwebformform76705.BuyerTypeValue[1].checked == false
+                                            && catwebformform76705.CAT_Custom_20045635_194899[2].checked == false && catwebformform76705..BuyerTypeValue[3].checked ==false)
+                                                why += "- Please enter Buyer Type\n";
+                                        }
+
+                                        if (document.getElementById("CAT_Custom_20044086_194899_2").checked == true) {
+                                            if (document.getElementById("CAT_Custom_20044087_194899").value == " ")
+                                                why += "- Please enter Intermediary Type\n";
+                                        }
+
+                                        if (theForm.CellPhone) why += isEmpty(theForm.CellPhone.value, "Mobile Phone Number");
+
+                                        if (theForm.CAT_Custom_20044086_194899) why += checkSelected(theForm.CAT_Custom_20044086_194899, "Membership Type");
+                                        
+                                        if (theForm.CAT_Custom_20130800_194899) why += checkDropdown(theForm.CAT_Custom_20130800_194899.value,
+                                            "Investment Amount Per Deal");
+                                        if (theForm.CAT_Custom_20130801_194899) why += checkDropdown(theForm.CAT_Custom_20130801_194899.value,
+                                            "Investments Per Year");
+
+                                        if (theForm.CAT_Custom_20044093_194899) why += checkSelected(theForm.CAT_Custom_20044093_194899, "Members Agreement");
+
+                                        if (theForm['g-recaptcha-response']) why += reCaptchaV2IsInvalid(theForm, "Please prove you're not a robot");
+                                        if (why != "") {
+                                            alert(why);
+                                            return false;
+                                        }
+                                        if (submitcount76705 == 0) {
+                                            submitcount76705++;
+                                            theForm.submit();
+                                            return false;
+                                        } else {
+                                            alert("Form submission is in progress.");
+                                            return false;
+                                        }
+                                    } */
+                            </script>
+                        </form>
+                    </div>
+                </div>
+            </div>  
+        </div>
+      </body>
+    </html>
+</form>
+
+<script>
+    function Init() {
+      console.log("Init triggered");
+      localStorage.clear();
+      localStorage.setItem("prevError", 0);
+      localStorage.setItem("prevEmailError", 0);
+      localStorage.setItem("prevPasswordError", 0);
+      localStorage.setItem("errors", 0);
+      localStorage.setItem("errorMessage", "");
+      localStorage.setItem("firstName", "");
+      localStorage.setItem("Authenticated" , 0);      
+    }  
+
+    function ValidatePage() {
+        console.log("Validate Page");        
+
+        var firstName = "";
+        var lastName = "";
+        var emailAddress = "";
+        var mobilePhoneNumber = "";
+        var prevError = 0;
+        var errors = false;
+        var pageTopError = false;
+        
+        var errorMessage = "";
+        var errors = false;
+        var displayData = '';
+        var errorFullHTML = '<strong style="font-weight:700!important;">';
+        var passwordFullHTML = '<strong style="font-weight:700!important;">';   
+
+       if (document.getElementById('FirstName').value === null || document.getElementById('FirstName').value == '') {
+            errors = true;  
+            localStorage.setItem("errors", 1);    
+            errorMessage += "- Please enter First Name\n";
+            errorFullHTML += 'Please enter First Name</strong>'; 
+            displayData = document.getElementById('ErrorTextFirstName').innerHTML = "(Please enter First Name)";
+            document.getElementById('LabelFirstName').style.color = "red"; 
+            document.getElementById('FirstName').style.borderColor = "red";
+            document.getElementById('LabelLastName').style.marginLeft = "203px";
+            document.getElementById('ErrorTextFirstName').style.display = "inline";
+        } 
+        else {
+            displayData = document.getElementById('ErrorTextFirstName').innerHTML = ""; 
+            document.getElementById('LabelFirstName').style.color = "initial"; 
+            document.getElementById('FirstName').style.borderColor = "initial";
+            document.getElementById('LabelLastName').style.marginLeft = "390px";
+            document.getElementById('ErrorTextFirstName').style.display = "none";        
+        }
+
+        if (document.getElementById('LastName').value === null || document.getElementById('LastName').value == '') {
+            errors = true;  
+            localStorage.setItem("errors", 1);    
+            errorMessage += "- Please enter Last Name\n";
+            errorFullHTML += 'Please enter Last Name</strong>';
+            document.getElementById('LabelLastName').style.color = "red"; 
+            document.getElementById('LastName').style.borderColor = "red";
+            document.getElementById('ErrorTextLastName').style.display = "inline";
+        }
+        else {
+            document.getElementById('LabelLastName').style.color = "initial"; 
+            document.getElementById('LastName').style.borderColor = "initial";
+            document.getElementById('ErrorTextLastName').style.display = "none";          
+        }
+
+        if (document.getElementById('EmailAddress').value === null || document.getElementById('EmailAddress').value == '') {
+            errors = true;  
+            localStorage.setItem("errors", 1);    
+            errorMessage += "- Please enter Email Address\n";
+            errorFullHTML += 'Please enter Email Address</strong>'; 
+            document.getElementById('LabelEmailAddress').style.color = "red"; 
+            document.getElementById('EmailAddress').style.borderColor = "red";
+            document.getElementById('LabelMobilePhone').style.marginLeft = "169px";
+            document.getElementById('ErrorTextEmailAddress').style.display = "inline";
+        }
+        else {
+            var emailAddress = document.getElementById('EmailAddress').value;
+            var emailValid =  validateEmail(emailAddress);
+
+            if (emailValid === false) {
+                errors = true;  
+                localStorage.setItem("errors", 1);                    
+                errorMessage += "- Invalid Email Address\n";
+                errorFullHTML += 'Invalid Email Address</strong>';   
+                document.getElementById('LabelEmailAddress').style.color = "red"; 
+                document.getElementById('EmailAddress').style.borderColor = "red";
+                document.getElementById('LabelMobilePhone').style.marginLeft = "261px";
+                document.getElementById('ErrorTextEmailAddress').innerHTML = "(Invalid Email Address)";
+                document.getElementById('ErrorTextEmailAddress').style.display = "inline";
+            }
+            else {
+                document.getElementById('LabelEmailAddress').style.color = "initial"; 
+                document.getElementById('EmailAddress').style.borderColor = "initial";
+                document.getElementById('LabelMobilePhone').style.marginLeft = "429px";
+                document.getElementById('ErrorTextEmailAddress').style.display = "none";           
+            }    
+        }
+
+        if (document.getElementById('MobilePhone').value === null || document.getElementById('MobilePhone').value == '') {
+            errors = true;  
+            localStorage.setItem("errors", 1);    
+            errorMessage += "- Please enter Mobile Phone Number\n";
+            errorFullHTML += 'Please enter Mobile Phone Number</strong>';            
+            document.getElementById('LabelMobilePhone').style.color = "red"; 
+            document.getElementById('MobilePhone').style.borderColor = "red";
+            document.getElementById('ErrorTextMobilePhone').style.display = "inline";
+        }
+        else {
+            document.getElementById('LabelMobilePhone').style.color = "initial"; 
+            document.getElementById('MobilePhone').style.borderColor = "initial";
+            document.getElementById('ErrorTextMobilePhone').style.display = "none";          
+        }
+
+        var MembershipTypeBuyer         = document.getElementById('MembershipTypeBuyer').checked;
+        var MembershipTypeSeller        = document.getElementById('MembershipTypeSeller').checked;
+        var MembershipTypeIntermediary  = document.getElementById('MembershipTypeIntermediary').checked;
+
+        if (!MembershipTypeBuyer && !MembershipTypeSeller && !MembershipTypeIntermediary) {
+            errors = true;  
+            localStorage.setItem("errors", 1);    
+            errorMessage += "- Membership Type must be selected\n";
+            errorFullHTML += 'Membership Type must be selected</strong>';            
+            document.getElementById('MembershipTypeHeading').style.color = "red";
+            document.getElementById('ErrorTextMembershipType').style.display = "inline";
+        }
+        else {
+            document.getElementById('MembershipTypeHeading').style = "font-family: 'Pier', Arial, Helvetica, sans-serif;font-size:24px;font-weight:normal;color:#e67e25;display:inline;";                
+            document.getElementById('ErrorTextMembershipType').style.display = "none";
+
+            if (MembershipTypeBuyer) {
+                var BuyerTypeWholesale      = document.getElementById('BuyerTypeValue_Wholesale').checked;                                    
+                var BuyerTypeProfessional   = document.getElementById('BuyerTypeValue_Professional').checked;                                      
+                var BuyerTypeAccredited     = document.getElementById('BuyerTypeValue_Accredited').checked;                                      
+                var BuyerTypeQualified      = document.getElementById('BuyerTypeValue_Qualified').checked;
+
+                if (!BuyerTypeWholesale && !BuyerTypeProfessional && !BuyerTypeAccredited && !BuyerTypeQualified) {
+                    errors = true;  
+                    localStorage.setItem("errors", 1);    
+                    errorMessage += "- Please enter Buyer Type\n";
+                    errorFullHTML += 'Please enter Buyer Type</strong>';            
+                    document.getElementById('BuyerTypeHeading').style.color = "red";
+                    document.getElementById('ErrorTextBuyerType').style.display = "inline";
+                }
+                else {
+                    document.getElementById('BuyerTypeHeading').style.color = "initial";
+                    document.getElementById('ErrorTextBuyerType').style.display = "none";
+                }
+            } 
+
+            if (MembershipTypeIntermediary) {                
+                var IntermediaryType = document.getElementById('IntermediaryType').value;                
+                if (IntermediaryType.length <= 1) {
+                    errors = true;  
+                    localStorage.setItem("errors", 1);    
+                    errorMessage += "- Please enter Intermediary Type\n";
+                    errorFullHTML += 'Please enter Intermediary Type</strong>';            
+                    document.getElementById('IntermediaryTypeHeading').style.color = "red";
+                    document.getElementById('ErrorTextIntermediaryType').style.display = "inline";
+                }
+                else {
+                    document.getElementById('IntermediaryTypeHeading').style.color = "initial";
+                    document.getElementById('ErrorTextIntermediaryType').style.display = "none";
+                }                
+            } 
+        }    
+
+        if (errors == true) {
+            pageTopError = true;
+        }  
+        
+        if (document.getElementById('InvestmentAmountPerDeal').value.trim() == "" ) {
+            errors = true;  
+            localStorage.setItem("errors", 1);    
+            errorMessage += "- Please select Investment Amount Per Deal\n";
+            errorFullHTML += 'Please select Investment Amount Per Deal</strong>';            
+            document.getElementById('LabelInvestmentAmountPerDeal').style.color = "red"; 
+            document.getElementById('InvestmentAmountPerDeal').style.borderColor = "red";
+            document.getElementById('LabelInvestmentAmountPerYear').style.marginLeft = "103px";
+            document.getElementById('ErrorTextInvestmentAmountPerDeal').style.display = "inline";
+        }
+        else {
+            document.getElementById('LabelInvestmentAmountPerDeal').style.color = "initial";
+            document.getElementById('InvestmentAmountPerDeal').style.borderColor = "rgb(169, 169, 169)";
+            document.getElementById('ErrorTextInvestmentAmountPerDeal').style.display = "none";
+            document.getElementById('LabelInvestmentAmountPerYear').style.marginLeft = "270px";            
+        }
+
+      if (document.getElementById('InvestmentAmountPerYear').value.trim() == "" ) {
+            errors = true;  
+            localStorage.setItem("errors", 1);    
+            errorMessage += "- Please select Investments Per Year\n";
+            errorFullHTML += 'Please select Investments Per Year</strong>';            
+            document.getElementById('LabelInvestmentAmountPerYear').style.color = "red"; 
+            document.getElementById('InvestmentAmountPerYear').style.borderColor = "red";
+            document.getElementById('ErrorTextInvestmentAmountPerYear').style.display = "inline";
+        }
+        else {
+            document.getElementById('LabelInvestmentAmountPerYear').style.color = "initial";
+            document.getElementById('InvestmentAmountPerYear').style.borderColor = "rgb(169, 169, 169)";
+            document.getElementById('ErrorTextInvestmentAmountPerYear').style.display = "none";            
+        }         
+
+        if (document.getElementById('MembersAgreement').checked == true) {
+            document.getElementById('LabelMembersAgreement').style.color = "initial";
+            document.getElementById('ErrorTextMembersAgreement').style.display = "none";
+        }   
+        else {
+            errors = true;  
+            localStorage.setItem("errors", 1);    
+            errorMessage += "- Members Agreement must be selected\n";
+            errorFullHTML += 'Members Agreement must be selected</strong>';            
+            document.getElementById('LabelMembersAgreement').style.color = "red";             
+            document.getElementById('ErrorTextMembersAgreement').style.display = "inline";
+        }   
+
+        var reCaptchaResponse = grecaptcha.getResponse();        
+        if (reCaptchaResponse = null || reCaptchaResponse == "") {       
+            errors = true;  
+            localStorage.setItem("errors", 1);    
+            errorMessage += "- Please Prove you're not a robot\n";
+            errorFullHTML += "Please Prove you're not a robot</strong>";            
+            document.getElementById('LabelProveNotABot').style.color = "red";             
+            document.getElementById('ErrorTextProveNotABot').style.display = "inline";
+        }   
+        else {
+            document.getElementById('LabelProveNotABot').style.color = "initial";
+            document.getElementById('ErrorTextProveNotABot').style.display = "none";
+        }                            
+
+        if (errors == true) {
+            alert(errorMessage);
+            if (pageTopError == true) {
+                $('html, body').animate({scrollTop:0}, 'fast');
+            }    
+        }
+        else {  
+            var firstName_Param                             = document.getElementById("FirstName").value;
+            var lastName_Param                              = document.getElementById("LastName").value;
+            var email_Param                                 = document.getElementById("EmailAddress").value;
+            var mobile_Param                                = document.getElementById("MobilePhone").value;
+            var country_Param                               = document.getElementById("Country").value;
+            var state_Param                                 = document.getElementById("State").value;
+            var membershipTypeBuyer_Param                   = document.getElementById("MembershipTypeBuyer").checked; 
+            var membershipTypeSeller_Param                  = document.getElementById("MembershipTypeSeller").checked;
+            var membershipTypeIntermediary_Param            = document.getElementById("MembershipTypeIntermediary").checked;
+            var buyerTypeValue_Wholesale_Param              = document.getElementById("BuyerTypeValue_Wholesale").checked;
+            var buyerTypeValue_Professional_Param           = document.getElementById("BuyerTypeValue_Professional").checked;
+            var buyerTypeValue_Accredited_Param             = document.getElementById("BuyerTypeValue_Accredited").checked;
+            var buyerTypeValue_Qualified_Param              = document.getElementById("BuyerTypeValue_Qualified").checked;
+            var assetTypesOfInterest_Securities_Param       = document.getElementById("AssetTypesOfInterest_Securities").checked
+            var assetTypesOfInterest_Funds_Param            = document.getElementById("AssetTypesOfInterest_Funds").checked;
+            var assetTypesOfInterest_FixedIncome_Param      = document.getElementById("AssetTypesOfInterest_FixedIncome").checked;
+            var assetTypesOfInterest_Commercial_Param       = document.getElementById("AssetTypesOfInterest_Commercial").checked;
+            var assetTypesOfInterest_DirectAssets_Param     = document.getElementById("AssetTypesOfInterest_DirectAssets").checked;
+            var assetTypesOfInterest_Crypto_Param           = document.getElementById("AssetTypesOfInterest_Crypto").checked;
+            var assetIndustry_Agriculture_Param             = document.getElementById("AssetIndustry_Agriculture").checked;
+            var assetIndustry_ProfessionalServices_Param    = document.getElementById("AssetIndustry_ProfessionalServices").checked;
+            var assetIndustry_Banking_Param                 = document.getElementById("AssetIndustry_Banking").checked;
+            var assetIndustry_CommunicationMedia_Param      = document.getElementById("AssetIndustry_CommunicationMedia").checked;
+            var assetIndustry_Construction_Param            = document.getElementById("AssetIndustry_Construction").checked;
+            var assetIndustry_EducationAndTraining_Param    = document.getElementById("AssetIndustry_EducationAndTraining").checked;
+            var assetIndustry_Hospitality_Param             = document.getElementById("AssetIndustry_Hospitality").checked;
+            var assetIndustry_EnergyAndUtilities_Param      = document.getElementById("AssetIndustry_EnergyAndUtilities").checked;
+            var assetIndustry_Transportation_Param          = document.getElementById("AssetIndustry_Transportation").checked;
+            var assetIndustry_Healthcare_Param              = document.getElementById("AssetIndustry_Healthcare").checked;
+            var assetIndustry_WholesaleProducts_Param       = document.getElementById("AssetIndustry_WholesaleProducts").checked;
+            var assetIndustry_RetailProducts_Param          = document.getElementById("AssetIndustry_RetailProducts").checked; 
+            var assetIndustry_InformationTechnology_Param   = document.getElementById("AssetIndustry_InformationTechnology").checked;
+            var assetIndustry_Construction_Param            = document.getElementById("AssetIndustry_Construction").checked;
+            var assetIndustry_RealEstate_Param              = document.getElementById("AssetIndustry_RealEstate").checked;
+            var assetIndustry_Resources_Param               = document.getElementById("AssetIndustry_Resources").checked;
+            var assetIndustry_Other_Param                   = document.getElementById("AssetIndustry_Other").checked;
+            var assetIndustry_Other_Text                    = document.getElementById("AssetIndustry_Other_Text").value;
+            var ecosystem_AIRR_Param                        = document.getElementById("Ecosystem_AIRR").checked;
+            var ecosystem_BlackWall_Param                   = document.getElementById("Ecosystem_BlackWall").checked;
+            var ecosystem_Blooms_Param                      = document.getElementById("Ecosystem_Blooms").checked;
+            var ecosystem_Haoma_Param                       = document.getElementById("Ecosystem_Haoma").checked;
+            var ecosystem_MoneyTech_Param                   = document.getElementById("Ecosystem_MoneyTech").checked;  
+            var ecosystem_PlanetInnovation_Param            = document.getElementById("Ecosystem_PlanetInnovation").checked;
+            var ecosystem_Pelathon_Param                    = document.getElementById("Ecosystem_Pelathon").checked;
+            var ecosystem_Tyro_Param                        = document.getElementById("Ecosystem_Tyro").checked;
+
+            var BuyerTypeWholesale                          = document.getElementById('BuyerTypeValue_Wholesale').checked;                                    
+            var BuyerTypeProfessional                       = document.getElementById('BuyerTypeValue_Professional').checked;                                      
+            var BuyerTypeAccredited                         = document.getElementById('BuyerTypeValue_Accredited').checked;                                      
+            var BuyerTypeQualified                          = document.getElementById('BuyerTypeValue_Qualified').checked;
+
+            var InvestmentAmountPerDeal                     = document.getElementById("InvestmentAmountPerDeal").value; 
+            var InvestmentsPerYear                          = document.getElementById('InvestmentAmountPerYear').value;
+    
+            var membershipType_Param        = "";
+            var assetTypesOfInterest_Param  = "";
+            var assetIndustry_Param         = "";
+            var ecosystem_Param             = "";
+            var buyerType_Param             = "";
+            var intermediary_Param          = "";
+
+            if (membershipTypeBuyer_Param != false) {
+                membershipType_Param = "Buyer";
+
+                if (buyerTypeValue_Wholesale_Param == true) {
+                    buyerType_Param = "Wholesale / Sophisticated";
+                }              
+                else if (buyerTypeValue_Professional_Param == true) {
+                    buyerType_Param = "Professional";    
+                }
+                else if (buyerTypeValue_Accredited_Param == true) {       
+                    buyerType_Param = "Accredited";
+                }
+                else if (buyerTypeValue_Qualified_Param == true) {
+                    buyerType_Param = "Qualified Institutional";
+                }                    
+            }
+
+            if (membershipTypeSeller_Param != false) {
+                if (membershipType_Param === null || membershipType_Param == "") {
+                    membershipType_Param = "Seller";
+                }
+                else {    
+                    membershipType_Param += ",Seller";
+                }    
+            }
+
+            if (membershipTypeIntermediary_Param != false) {
+                if (membershipType_Param === null || membershipType_Param == "") {
+                    membershipType_Param = "Intermediary";
+                }
+                else {    
+                    membershipType_Param += ",Intermediary";
+                }    
+            }
+
+            if (assetTypesOfInterest_Securities_Param != false) {
+                assetTypesOfInterest_Param = "Securities";
+            }               
+
+            if (assetTypesOfInterest_Funds_Param != false) {
+                if (assetTypesOfInterest_Param === null || assetTypesOfInterest_Param == "") {
+                   assetTypesOfInterest_Param = "Funds"; 
+                }
+                else {
+                  assetTypesOfInterest_Param += ",Funds";   
+                }
+            }
+
+            if (assetTypesOfInterest_FixedIncome_Param != false) {
+                if (assetTypesOfInterest_Param === null || assetTypesOfInterest_Param == "") {
+                   assetTypesOfInterest_Param = "Fixed Income"; 
+                }
+                else {
+                  assetTypesOfInterest_Param += ",Fixed Income";   
+                }             
+            }      
+
+            if (assetTypesOfInterest_Commercial_Param  != false) {
+                if (assetTypesOfInterest_Param === null || assetTypesOfInterest_Param == "") {
+                   assetTypesOfInterest_Param = "Commercial"; 
+                }
+                else {
+                  assetTypesOfInterest_Param += ",Commercial";   
+                }             
+            }
+
+            if (assetTypesOfInterest_DirectAssets_Param != false) {
+                if (assetTypesOfInterest_Param === null || assetTypesOfInterest_Param == "") {
+                   assetTypesOfInterest_Param = "Direct Assets"; 
+                }
+                else {
+                  assetTypesOfInterest_Param += ",Direct Assets";   
+                }                            
+            }
+
+            if (assetTypesOfInterest_Crypto_Param != false) {
+                if (assetTypesOfInterest_Param === null || assetTypesOfInterest_Param == "") {
+                   assetTypesOfInterest_Param = "Crypto/Blockchain"; 
+                }
+                else {
+                    assetTypesOfInterest_Param += ",Crypto/Blockchain";   
+                }                           
+            }
+
+            if (assetIndustry_Agriculture_Param != false) {
+               assetIndustry_Param = "Agriculture Forestry and Fishing"; 
+            }
+
+            if (assetIndustry_Banking_Param != false) {
+                if (assetIndustry_Param === null || assetIndustry_Param == "") {
+                   assetIndustry_Param = "Banking Financial Services and Insurance"; 
+                }
+                else {
+                  assetIndustry_Param += ",Banking Financial Services and Insurance";   
+                }                         
+            }
+
+            if (assetIndustry_CommunicationMedia_Param != false) {
+                if (assetIndustry_Param === null || assetIndustry_Param == "") {
+                   assetIndustry_Param = "Communication Media and Arts"; 
+                }
+                else {
+                  assetIndustry_Param += ",Communication Media and Arts";   
+                }                
+            }
+
+            if (assetIndustry_Construction_Param != false) {
+                if (assetIndustry_Param === null || assetIndustry_Param == "") {
+                   assetIndustry_Param = "Construction Industrials and Materials"; 
+                }
+                else {
+                  assetIndustry_Param += ",Construction Industrials and Materials";   
+                }                             
+            }
+
+            if (assetIndustry_EducationAndTraining_Param != false) {
+                if (assetIndustry_Param === null || assetIndustry_Param == "") {
+                   assetIndustry_Param = "Education and Training"; 
+                }
+                else {
+                  assetIndustry_Param += ",Education and Training";   
+                }           
+            }
+
+            if (assetIndustry_ProfessionalServices_Param != false) {
+                if (assetIndustry_Param === null || assetIndustry_Param == "") {
+                   assetIndustry_Param = "Professional Services"; 
+                }
+                else {
+                  assetIndustry_Param += ",Professional Services";   
+                }           
+            }
+
+            if (assetIndustry_Hospitality_Param != false) {
+                if (assetIndustry_Param === null || assetIndustry_Param == "") {
+                   assetIndustry_Param = "Restaurants Hotels and Tourism"; 
+                }
+                else {
+                  assetIndustry_Param += ",Restaurants Hotels and Tourism";   
+                }                         
+            }
+
+            if (assetIndustry_EnergyAndUtilities_Param != false) {
+                if (assetIndustry_Param === null || assetIndustry_Param == "") {
+                   assetIndustry_Param = "Energy and Utilities"; 
+                }
+                else {
+                  assetIndustry_Param += ",Energy and Utilities";   
+                }                  
+            }
+
+            if (assetIndustry_Transportation_Param != false) {
+                if (assetIndustry_Param === null || assetIndustry_Param == "") {
+                   assetIndustry_Param = "Transportation and Logistics"; 
+                }
+                else {
+                  assetIndustry_Param += ",Transportation and Logistics";   
+                }           
+            }
+            
+            if (assetIndustry_Healthcare_Param != false) {
+                if (assetIndustry_Param === null || assetIndustry_Param == "") {
+                   assetIndustry_Param = "Healthcare and Medical"; 
+                }
+                else {
+                  assetIndustry_Param += ",Healthcare and Medical";   
+                }                         
+            }           
+
+            if (assetIndustry_WholesaleProducts_Param != false) {
+                if (assetIndustry_Param === null || assetIndustry_Param == "") {
+                   assetIndustry_Param = "Wholesale Products and Services"; 
+                }
+                else {
+                  assetIndustry_Param += ",Wholesale Products and Services";                                           
+                }                            
+            }
+
+            if (assetIndustry_RetailProducts_Param != false) {
+                if (assetIndustry_Param === null || assetIndustry_Param == "") {
+                   assetIndustry_Param = "Retail Products and Services"; 
+                }
+                else {
+                  assetIndustry_Param += ",Retail Products and Services";   
+                }                            
+            }
+
+            if (assetIndustry_InformationTechnology_Param != false) {
+                if (assetIndustry_Param === null || assetIndustry_Param == "") {
+                   assetIndustry_Param = "Information Technology"; 
+                }
+                else {
+                  assetIndustry_Param += ",Information Technology";   
+                }               
+            }
+
+            if (assetIndustry_Construction_Param != false) {
+                if (assetIndustry_Param === null || assetIndustry_Param == "") {
+                   assetIndustry_Param = "Construction Industrials and Materials"; 
+                }
+                else {
+                  assetIndustry_Param += ",Construction Industrials and Materials";   
+                }                             
+            }
+
+            if (assetIndustry_RealEstate_Param != false) {
+                if (assetIndustry_Param === null || assetIndustry_Param == "") {
+                   assetIndustry_Param = "Real Estate"; 
+                }
+                else {
+                  assetIndustry_Param += ",Real Estate";   
+                }                                
+            }
+
+            if (assetIndustry_Resources_Param != false) {
+                  if (assetIndustry_Param === null || assetIndustry_Param == "") {
+                   assetIndustry_Param = "Resources Metals and Mining"; 
+                }
+                else {
+                  assetIndustry_Param += ",Resources Metals and Mining";   
+                }                        
+            }
+
+            if (assetIndustry_Other_Param != false) {
+                if (assetIndustry_Param === null || assetIndustry_Param == "") {
+                   assetIndustry_Param = "Other"; 
+                }
+                else {
+                  assetIndustry_Param += ",Other";   
+                }                          
+            }
+
+            if (ecosystem_AIRR_Param != false) {
+                if (ecosystem_Param === null || ecosystem_Param == "") {
+                   ecosystem_Param = "AIRR"; 
+                }
+                else {
+                  ecosystem_Param += ",AIRR";   
+                }                          
+            }   
+
+            if (ecosystem_Blooms_Param != false) {
+               if (ecosystem_Param === null || ecosystem_Param == "") {
+                   ecosystem_Param = "Blooms the Chemist"; 
+                }
+                else {
+                  ecosystem_Param += ",Blooms the Chemist";   
+                } 
+            }   
+
+            if (ecosystem_Param === null || ecosystem_Param == "") {
+                ecosystem_Param = "Blackwall,Haoma Mining,Moneytech,Planet Innovation,Pelathon,Tyro"; 
+            }
+            else {
+                ecosystem_Param += ",Blackwall,Haoma Mining,Moneytech,Planet Innovation,Pelathon,Tyro";
+            } 
+
+            /*if (ecosystem_BlackWall_Param != false) {
+                if (ecosystem_Param === null || ecosystem_Param == "") {
+                   ecosystem_Param = "Blackwall"; 
+                }
+                else {
+                  ecosystem_Param += ",Blackwall";   
+                }                          
+            }            
+
+            if (ecosystem_Haoma_Param != false) {
+               if (ecosystem_Param === null || ecosystem_Param == "") {
+                   ecosystem_Param = "Haoma Mining"; 
+                }
+                else {
+                  ecosystem_Param += ",Haoma Mining";   
+                }                
+            }       
+
+            if (ecosystem_MoneyTech_Param != false) {
+                 if (ecosystem_Param === null || ecosystem_Param == "") {
+                   ecosystem_Param = "Moneytech"; 
+                }
+                else {
+                  ecosystem_Param += ",Moneytech";   
+                }                 
+            }
+            
+            if (ecosystem_PlanetInnovation_Param != false) {
+                if (ecosystem_Param === null || ecosystem_Param == "") {
+                   ecosystem_Param = "Planet Innovation"; 
+                }
+                else {
+                  ecosystem_Param += ",Planet Innovation";   
+                }   
+            }  
+
+            if (ecosystem_Pelathon_Param != false) {
+                if (ecosystem_Param === null || ecosystem_Param == "") {
+                   ecosystem_Param = "Pelathon"; 
+                }
+                else {
+                  ecosystem_Param += ",Pelathon";   
+                }                  
+            }               
+
+            if (ecosystem_Tyro_Param != false) {
+              if (ecosystem_Param === null || ecosystem_Param == "") {
+                   ecosystem_Param = "Tyro"; 
+                }
+                else {
+                  ecosystem_Param += ",Tyro";   
+                }                        
+            }  */                 
+
+            window.open('https://playpen2.staging-sydney.near-me.com/process-membership?firstName=' + firstName_Param + '&lastName=' + lastName_Param + '&email=' +
+                email_Param + '&mobile=' + mobile_Param + '&country=' + country_Param + '&state=' + state_Param + '&membershipType=' + membershipType_Param +
+                '&assetTypesOfInterest=' + assetTypesOfInterest_Param + '&assetIndustry=' + assetIndustry_Param + '&assetIndustryOther=' + assetIndustry_Other_Text +
+                '&buyerType=' +  buyerType_Param + '&intermediaryType=' + IntermediaryType + '&ecosystem=' + ecosystem_Param + '&amountPerDeal=' +
+                InvestmentAmountPerDeal + '&investmentsPerYear=' + InvestmentsPerYear, '_self');
+        } 
+
+        return false;  
+    }    
+
+    function validateEmail(email) {
+      var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+      return re.test(String(email).toLowerCase());
+    } 
+
+    function ValidateFirstName() {
+        if (document.getElementById('FirstName').value === null || document.getElementById('FirstName').value == '') {            
+            displayData = document.getElementById('ErrorTextFirstName').innerHTML = "(Please enter First Name)";
+            document.getElementById('LabelFirstName').style.color = "red"; 
+            document.getElementById('FirstName').style.borderColor = "red";
+            document.getElementById('LabelLastName').style.marginLeft = "203px";
+            document.getElementById('ErrorTextFirstName').style.display = "inline";           
+        }
+        else {
+            displayData = document.getElementById('ErrorTextFirstName').innerHTML = ""; 
+            document.getElementById('LabelFirstName').style.color = "initial"; 
+            document.getElementById('FirstName').style.borderColor = "initial";
+            document.getElementById('LabelLastName').style.marginLeft = "390px";
+            document.getElementById('ErrorTextFirstName').style.display = "none";
+        }
+    } 
+
+    function ValidateLastName() {
+        if (document.getElementById('LastName').value === null || document.getElementById('LastName').value == '') {
+            document.getElementById('LabelLastName').style.color = "red"; 
+            document.getElementById('LastName').style.borderColor = "red";
+            document.getElementById('ErrorTextLastName').style.display = "inline";
+        }
+        else {
+            document.getElementById('LabelLastName').style.color = "initial"; 
+            document.getElementById('LastName').style.borderColor = "initial";
+            document.getElementById('ErrorTextLastName').style.display = "none";          
+        }       
+    }
+
+    function ValidateEMailAddress() {
+        if (document.getElementById('EmailAddress').value === null || document.getElementById('EmailAddress').value == '') {
+            document.getElementById('LabelEmailAddress').style.color = "red"; 
+            document.getElementById('EmailAddress').style.borderColor = "red";
+            document.getElementById('LabelMobilePhone').style.marginLeft = "169px";
+            document.getElementById('ErrorTextEmailAddress').style.display = "inline";
+        }
+        else {
+            var emailAddress = document.getElementById('EmailAddress').value;
+            var emailValid =  validateEmail(emailAddress);
+
+            if (emailValid === false) {
+                document.getElementById('LabelEmailAddress').style.color = "red"; 
+                document.getElementById('EmailAddress').style.borderColor = "red";
+                document.getElementById('LabelMobilePhone').style.marginLeft = "261px";
+                document.getElementById('ErrorTextEmailAddress').innerHTML = "(Invalid Email Address)";
+                document.getElementById('ErrorTextEmailAddress').style.display = "inline";
+            }
+            else {
+                document.getElementById('LabelEmailAddress').style.color = "initial"; 
+                document.getElementById('EmailAddress').style.borderColor = "initial";
+                document.getElementById('LabelMobilePhone').style.marginLeft = "429px";
+                document.getElementById('ErrorTextEmailAddress').style.display = "none";           
+            }    
+        }
+    }  
+
+    function ValidateMobilePhone() {
+        if (document.getElementById('MobilePhone').value === null || document.getElementById('MobilePhone').value == '') {
+            document.getElementById('LabelMobilePhone').style.color = "red"; 
+            document.getElementById('MobilePhone').style.borderColor = "red";
+            document.getElementById('ErrorTextMobilePhone').style.display = "inline";
+        }
+        else {
+            document.getElementById('LabelMobilePhone').style.color = "initial"; 
+            document.getElementById('MobilePhone').style.borderColor = "initial";
+            document.getElementById('ErrorTextMobilePhone').style.display = "none";          
+        }        
+    } 
+
+    function ValidateMembershipType() {
+        var MembershipTypeBuyer         = document.getElementById('MembershipTypeBuyer').checked;
+        var MembershipTypeSeller        = document.getElementById('MembershipTypeSeller').checked;
+        var MembershipTypeIntermediary  = document.getElementById('MembershipTypeIntermediary').checked;
+
+        if (!MembershipTypeBuyer && !MembershipTypeSeller && !MembershipTypeIntermediary) {
+            document.getElementById('MembershipTypeHeading').style.color = "red";
+            document.getElementById('ErrorTextMembershipType').style.display = "inline";
+        }
+        else {
+            document.getElementById('MembershipTypeHeading').style = "font-family: 'Pier', Arial, Helvetica, sans-serif;font-size:24px;font-weight:normal;color:#e67e25;display:inline;";                
+            document.getElementById('ErrorTextMembershipType').style.display = "none";
+        }            
+    }
+
+    function ValidateBuyerType() {
+        var BuyerTypeWholesale      = document.getElementById('BuyerTypeValue_Wholesale').checked;                                    
+        var BuyerTypeProfessional   = document.getElementById('BuyerTypeValue_Professional').checked;                                      
+        var BuyerTypeAccredited     = document.getElementById('BuyerTypeValue_Accredited').checked;                                      
+        var BuyerTypeQualified      = document.getElementById('BuyerTypeValue_Qualified').checked;
+
+        if (!BuyerTypeWholesale && !BuyerTypeProfessional && !BuyerTypeAccredited && !BuyerTypeQualified) {
+            document.getElementById('BuyerTypeHeading').style.color = "red";
+            document.getElementById('ErrorTextBuyerType').style.display = "inline";
+        }
+        else {
+            document.getElementById('BuyerTypeHeading').style.color = "initial";
+            document.getElementById('ErrorTextBuyerType').style.display = "none";
+        }        
+    }
+
+    function ValidateIntermediaryType() {
+        var IntermediaryType = document.getElementById('IntermediaryType').value;
+
+        if (IntermediaryType.length <= 1) {
+            document.getElementById('IntermediaryTypeHeading').style.color = "red";
+            document.getElementById('ErrorTextIntermediaryType').style.display = "inline";
+        }
+        else {
+            document.getElementById('IntermediaryTypeHeading').style.color = "initial";
+            document.getElementById('ErrorTextIntermediaryType').style.display = "none";
+        }                      
+    }
+
+    function ValidateInvestmentAmountPerDeal() {
+      if (document.getElementById('InvestmentAmountPerDeal').value.trim() == "" ) {
+            document.getElementById('LabelInvestmentAmountPerDeal').style.color = "red"; 
+            document.getElementById('InvestmentAmountPerDeal').style.borderColor = "red";
+            document.getElementById('LabelInvestmentAmountPerYear').style.marginLeft = "103px";
+            document.getElementById('ErrorTextInvestmentAmountPerDeal').style.display = "inline";
+        }
+        else {
+            document.getElementById('LabelInvestmentAmountPerDeal').style.color = "initial";
+            document.getElementById('InvestmentAmountPerDeal').style.borderColor = "rgb(169, 169, 169)";
+            document.getElementById('ErrorTextInvestmentAmountPerDeal').style.display = "none";
+            document.getElementById('LabelInvestmentAmountPerYear').style.marginLeft = "270px";            
+        }        
+    }
+
+    function ValidateInvestmentsPerYear() {
+        if (document.getElementById('InvestmentAmountPerYear').value.trim() == "" ) {
+            document.getElementById('LabelInvestmentAmountPerYear').style.color = "red"; 
+            document.getElementById('InvestmentAmountPerYear').style.borderColor = "red";
+            document.getElementById('ErrorTextInvestmentAmountPerYear').style.display = "inline";
+        }
+        else {
+            document.getElementById('LabelInvestmentAmountPerYear').style.color = "initial";
+            document.getElementById('InvestmentAmountPerYear').style.borderColor = "rgb(169, 169, 169)";
+            document.getElementById('ErrorTextInvestmentAmountPerYear').style.display = "none";            
+        }                 
+    }
+
+    function ValidateMembersAgreement() {
+        if (document.getElementById('MembersAgreement').checked == true) {
+            document.getElementById('LabelMembersAgreement').style.color = "initial";
+            document.getElementById('ErrorTextMembersAgreement').style.display = "none";
+        }   
+        else {
+            document.getElementById('LabelMembersAgreement').style.color = "red";             
+            document.getElementById('ErrorTextMembersAgreement').style.display = "inline";
+        }
+    } 
+
+    function ValidateNotARobot() {
+        var reCaptchaResponse = grecaptcha.getResponse();
+
+        if (reCaptchaResponse = null || reCaptchaResponse == "") {          
+            document.getElementById('LabelProveNotABot').style.color = "red";             
+            document.getElementById('ErrorTextProveNotABot').style.display = "inline";
+        }   
+        else {
+            document.getElementById('LabelProveNotABot').style.color = "initial";
+            document.getElementById('ErrorTextProveNotABot').style.display = "none";
+        }                             
+    }     
+
+    function AIRRvalidate() {
+        if (document.getElementById('Ecosystem_AIRR').checked) {
+            alert("Access to AIRR is subject to the Board Approval. Our Team will be in touch with you to confirm your access.");
+        }
+    }
+
+    function Bloomsvalidate() {
+        if (document.getElementById('Ecosystem_Blooms').checked) {
+            alert("Access to Blooms the Chemist is subject to the Board Approval. Our Team will be in touch with you to confirm your access.");
+        }
+    }             
+</script>

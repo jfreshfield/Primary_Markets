@@ -1,0 +1,37 @@
+query get_assets($per_page: Int = 10000, $id: ID) {
+  customizations(name: "asset", id: $id, per_page: $per_page, sort:[{property_name: "enabled", order: "desc"}]) {
+    results {
+      id
+      asset_name: property(name: "asset_name")
+      public_name: property(name: "public_name")
+      categories: property(name: "categories")
+      sale_type: property(name: "sale_type")
+      price_guide: property(name: "price_guide")
+      status: property(name: "status")
+      owner_name: property(name: "owner_name")
+      public_summary: property(name: "public_summary")
+      executive_summary: property(name: "executive_summary")
+      item_description: property(name: "item_description")
+      full_description_members_only: property(name: "full_description_members_only")
+      offering: property(name: "offering")
+      created_date: property(name: "created_date")
+      created_by_name: property(name: "created_by_name")
+      last_modified_date: property(name: "last_modified_date")
+      last_modified_by_name: property(name: "last_modified_by_name")
+      start_date: property(name: "start_date")
+      enabled: property(name: "enabled")
+      last_viewed_date: property(name: "last_viewed_date")
+      close_date: property(name: "close_date")
+      ecosystem: property(name: "ecosystem")
+      asset_url: property(name: "asset_url")
+      asset_listing_stage: property(name: "asset_listing_stage")
+      asset_listing_classification: property(name: "asset_listing_classification")
+      commission_percentage: property(name: "commission_percentage")
+      open_eois: property(name: "open_eois")
+      total_value_eois_won: property(name: "total_value_eois_won")
+      listing_image_url: property(name: "listing_image_url")
+      public_image_url: property(name: "public_image_url")
+      rich_text: property(name: "rich_text")
+    }
+  }
+}

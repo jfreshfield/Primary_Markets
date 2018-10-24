@@ -1,0 +1,40 @@
+---
+name: contact_form
+resource: Customization
+resource_owner: anyone
+configuration:
+  properties:
+    name:
+      validation:
+        presence: true
+    email:
+      validation:
+        presence: true
+        email: true
+    description:
+      validation:
+        presence: true
+email_notifications:
+  - contact_request_notification                
+---
+{% form method="post" action-xhr="api/user/customizations" %}
+    <label for="name">Name</label>
+    <input name="{{ form_builder.fields.properties.name.name }}" value="{{ form_builder.fields.properties.name.value }}" id="name" type="text">
+    {% if form_builder.errors['properties.name'] %}
+      <p>{{ form_builder.errors['properties.name'] }}</p>
+    {% endif %}
+
+    <label for="email">Email</label>
+    <input name="{{ form_builder.fields.properties.email.name }}" value="{{ form_builder.fields.properties.email.value }}" id="email" type="email">
+    {% if form_builder.errors['properties.email'] %}
+      <p>{{ form_builder.errors['properties.email'] }}</p>
+    {% endif %}
+
+    <label for="description">Description</label>
+    <textarea name="{{ form_builder.fields.properties.description.name }}" id="description">{{ form_builder.fields.properties.description.value }}</textarea>
+    {% if form_builder.errors['properties.description'] %}
+      <p>{{ form_builder.errors['properties.description'] }}</p>
+    {% endif %}
+
+    <button>Submit</button> 
+{% endform %}

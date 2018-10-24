@@ -1,0 +1,13 @@
+---
+name: send_salesforce_request
+to: https://login.salesforce.com/services/oauth2/token?grant_type=password&client_id=YjkyMzJmNDUzMGNmOTYzODVlNDQ0ZjE2OTUxOTU1NDI5MGViN2I3NWU3YTFjNmY300D0k000000DZZO&client_secret=8983295620726487553&username=bb1@primarymarkets.com&password=w2LGDQDP5n1l
+enabled: true
+format: http
+trigger_condition: true
+request_type: GET
+callback: "{% if data.id == blank %}{%- assign response_json = response.body | to_hash -%}{% execute_query 'store_id', user_id: data.user_id, account_ID: response_json.id %}{% endif %}"
+headers: >
+  {
+    "Content-Type": "application/json"
+  }
+---

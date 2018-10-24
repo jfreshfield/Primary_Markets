@@ -1,0 +1,11 @@
+mutation send_to_salesforce($data: HashObject){
+  api_call_send(
+    data: $data
+    template: { name: "send_salesforce_request" }
+  ) {
+    response{ status body }
+    errors {
+      message
+    }
+  } 
+}

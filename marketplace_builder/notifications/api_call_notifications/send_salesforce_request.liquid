@@ -1,0 +1,14 @@
+---
+name: send_salesforce_request
+to: '{{ data.salesforce_request }}'
+enabled: true
+format: http
+trigger_condition: true
+request_type: GET
+callback: "{%- assign api_response_asset = response.body | to_hash -%}"
+headers: '{ 
+    "Authorization": "Bearer {{ data.access_token }}",
+    "Content-Type": "application/json;charset=UTF-8"
+     }'
+---
+PING

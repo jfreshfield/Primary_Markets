@@ -1,0 +1,30 @@
+{%- include 'shared/constants' -%}
+<!doctype html>
+<html lang="en">
+<head>
+  {%- include 'layouts/csrf' -%}
+  {%- include 'layouts/prefetch' -%}
+  {%- include 'layouts/meta-tags' -%}
+  {%- include 'layouts/favicon' -%}
+  {%- include 'layouts/stylesheets' -%}
+  {%- include 'layouts/preload' -%}
+  {%- include 'layouts/fonts' -%}
+  {%- include 'layouts/page-title' -%}
+  {%- include 'layouts/page-description' -%}
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+
+  {%- yield 'head_content' -%}
+</head>
+
+<body>
+  {%- include 'layouts/header' -%}
+
+  <main>
+    {{ content_for_layout }}
+  </main>
+
+  {%- include 'layouts/footer' -%}
+  {%- include 'layouts/javascript-variables' -%}
+  {%- include 'layouts/javascripts' -%}
+</body>
+</html>

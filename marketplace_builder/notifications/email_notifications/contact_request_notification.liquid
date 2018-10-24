@@ -1,0 +1,116 @@
+---
+name: contact_request_notification
+delay: 0
+enabled: true
+from: PrimaryMarkets <info@PrimaryMarkets.com>
+subject: Reset Password
+to: '{{ form.model.properties.email }}'
+trigger_condition: true
+layout_path:
+---
+{% comment %}
+    The Liquid code at the top of this template, obtains the First Name of the Member associated with the email address, for which the Password reset has been requested.
+    This is to enable personalization, in the Password Reset email which is sent to the Member.
+{% endcomment %}
+
+{% execute_query 'authorize_to_salesforce', result_name: 'authorize_response' %}      
+{% if authorize_response.api_call_send.response.body %}
+    {% assign response = authorize_response.api_call_send.response.body | to_hash %}
+{% endif %}
+
+{% execute_query 'log', message: response %}
+
+{% if response.access_token == blank %}
+    {% execute_query 'log', type: 'error', message: 'Authorization to salesforce failed!' %}
+{% else %}
+    {% capture data_string %}
+    {
+            "salesforce_request": "https://primarymarkets--partial.cs57.my.salesforce.com/services/data/v43.0/query/?q=SELECT+Id,FirstName+from+Contact+WHERE+Email='{{ form.model.properties.email }}'",
+            "access_token": "{{ response.access_token }}",
+            "instance_url": "{{ response.instance_url }}"
+    }
+    {% endcapture %}
+
+    {% assign data = data_string | to_hash %}
+    {% execute_query 'log', message: response %}
+    {% execute_query 'log', message: data %}
+    {% execute_query 'send_to_salesforce', data: data, result_name: 'api_response' %}
+
+    {% if api_response.api_call_send.response.body %}
+        {% assign response_data = api_response.api_call_send.response.body | to_hash %}
+    {% endif %}  
+
+    {% execute_query 'log', message: response_data.records %}
+
+    {% if response_data.records == blank %}
+        {% execute_query 'log', type: 'error', message: 'Request to salesforce failed!' %}
+    {% else %}
+        {% for itemsReturned in response_data.records %}
+            {% execute_query 'log', message: itemsReturned.Id %}  
+            {% execute_query 'log', message: itemsReturned.FirstName %}  
+            {% assign resetToken = itemsReturned.Id %}          
+            {% assign firstName = itemsReturned.FirstName %}
+        {% endfor %}
+    {% endif %}
+{% endif %}  
+
+{% comment %}
+    The following code is used to format the Password Reset email, which is sent to the Member following a request to reset their Member Password.
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/hmac-sha256.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/components/enc-base64-min.js"></script>
+{% endcomment %}
+
+{% comment %}
+    The JavaScript code below is used to generate a secure JWT code, to use in the URL for the Password Reset request
+{% endcomment %}
+
+{% comment %}
+<script>
+    function Init() {
+        console.log("Top of EMail script");
+        alert("Processing EMail");
+        // ************************************************************************
+        // * Generate a Password Reset Token, based on the Member's email address *
+        // ************************************************************************
+        
+        var textString = '{{ context.params.email }}'; 
+        var words = CryptoJS.enc.Utf8.parse(textString);
+        var base64Token = CryptoJS.enc.Base64.stringify(words);
+    }    
+    
+    // ************************
+    // * Decode Base64 String *
+    // ************************
+
+    /*var base642 = base64;
+    var words2 = CryptoJS.enc.Base64.parse(base642);
+    var textString2 = CryptoJS.enc.Utf8.stringify(words2); */
+</script>
+{% endcomment %}
+
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"></head><body><base href="https://www.primarymarkets.com/">
+<p style="font:10pt arial;">Hi {{ firstName }},</p>  
+
+<p style="font:10pt arial;">You requested that your password be reset.</p>
+<p style="font:10pt arial;">Your username is <a href="mailto:'{{ form.model.properties.email }}'">'{{ form.model.properties.email }}'</a>. Click on the link below or paste it in your browser to reset your password:&nbsp;</p>
+<p style="font:10pt arial;"><a href="https://playpen2.staging-sydney.near-me.com/password-reset?token={{ resetToken }}">https://playpen2.staging-sydney.near-me.com/password-reset?token='{{ resetToken }}'</a></p>
+<p style="font:10pt arial;">If this request did not come from you, please disregard this email.</p>
+<p style="font:10pt arial;">Thank you.</p>
+<p style="font:10pt arial;"> PrimaryMarkets Team </p>
+<p style="font:10pt arial;"><strong style="font-family: Arial; font-size: 11px;">PrimaryMarkets Limited</strong> </p>
+<p style="font-family: Arial; font-size: 11px;"><strong><span><a href="https://www.primarymarkets.com/"><img alt="PrimaryMarkets Logo" src="https://www.primarymarkets.com/images/newsletter/PrimaryMarkets_Signature.jpg" title="PrimaryMarkets Logo" border="0"></a></span></strong>
+    <br><span><strong>D:</strong> +61 2 9993 4475 | <strong>F:</strong> +61 2 9993 4433 |</span>
+    <br><span><strong>W:</strong></span> <a href="https://www.primarymarkets.com/"><span>www.primarymarkets.com</span></a> <span>| Corporate Authorised Representative: AFSL 334 838</span>
+    <br><span>A: Level 12, 179 Elizabeth Street Sydney NSW 2000 Australia</span>
+    <br><span><strong>P: </strong>PO Box A298 Sydney South NSW 1235</span> </p>
+<p style="font-family: Arial; font-size: 11px;"><span style="font-size: 11px;">Connect with us on: </span><a href="https://www.facebook.com/PrimaryMarkets" style="font-size: 11px;">Facebook</a>
+    <span style="font-size: 11px;"> | </span><a href="https://twitter.com/Primary_Markets" style="font-size: 11px;">Twitter</a><span style="font-size: 11px;"> | </span> <a href="https://www.instagram.com/primarymarkets/" style="font-size: 11px;">Instagram</a><span style="font-size: 11px;"> | </span><a href="https://www.linkedin.com/company/primarymarkets" style="font-size: 11px;">Linkedin</a>        </p>
+<p style="font-family: Arial; font-size: 10px;"><span><span style="font-size: 9px;">This email and any attachment(s) are intended only for the exclusive and confidential use of the addressee(s). If you are not the intended recipient, any use, interference with, disclosure or copying of this material is unauthorised and strictly prohibited. If you have received this message in error, please notify the sender by return email immediately and delete the message from your computer without making any copies.</span>
+    <br>
+    <br> <img src="https://www.primarymarkets.com/images/ss-environment.jpg" style="font-size: 9px;" width="15" height="15"><span style="font-size: 9px;"> </span>    <strong style="font-size: 9px;"><strong><em><span>Please consider the environment before printing this e-mail.</span></em></strong></strong>
+    </span>
+</p></body></html><br><p>Message  protected by MailGuard: e-mail anti-virus, anti-spam and content filtering.<br><a href="http://www.mailguard.com.au">http://www.mailguard.com.au</a></p>
+<!-- MailGuard Message ID: 5ba49250da1adc - use this number for reporting -->
+&nbsp;<br>&nbsp;<br>

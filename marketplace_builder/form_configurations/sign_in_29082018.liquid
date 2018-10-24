@@ -1,0 +1,76 @@
+---
+name: sign_in
+resource: Session
+configuration:
+  email:
+  password:
+redirect_to: salesforce    
+---
+<form onsubmit="return DefaultPage();">
+  {% comment %}
+  <label for="email">Email</label>
+  <input name="{{ form_builder.fields.email.name }}" value="{{ form_builder.fields.email.value }}" id="email" type="email">
+
+  <label for="password">Password</label>
+  <input name="{{ form_builder.fields.password.name }}" id="password" type="password">
+  
+  {% if form_builder.errors.password %}
+    <p>{{ form_builder.errors.password }}</p>
+    <p>More Errors</p>
+  {% endif %}
+
+  <button>Log In</button>
+  {% endcomment %}
+
+   <!DOCTYPE html amp>
+    <html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="https://www.facebook.com/2008/fbml" amp>      
+        <body id="body">          
+            <div id="offering-left-panel">
+                <div class="offering-left-group" style = "width:210px;margin-top:-550px; margin-left:135px;float:left;">  
+                  <h1>Login</h1>
+                  <div class="form">
+                      <div class="item">
+                          <label for="email">Email</label>
+                          <br />
+                          <input name="{{ form_builder.fields.email.name }}" value="{{ form_builder.fields.email.value }}" id="email" type="email">
+                      <div class="item">
+                          <label for="password">Password</label>
+                          <br />
+                          <input name="{{ form_builder.fields.password.name }}" id="password" type="password">
+                          {% if form_builder.errors.password %}
+                            <p>{{ form_builder.errors.password }}</p>
+                          {% endif %}                          
+                      <div class="item">
+                          <input name="RememberMe" id="RememberMe" type="checkbox" checked="checked">
+                          <label for="RememberMe">Remember Me</label>
+                      </div>
+                      <div class="item" style="width:500px;">
+                          <input class="cat_button" value="Log in" type="submit">&nbsp;<a href="/reset_password" style="color:#3697d3;font-weight:500;">Forgot your password? Click here to reset now.</a> </div>
+                      <p>&nbsp;</p>
+                  </div>
+                </div>
+            </div>    
+        </body>    
+      </html> 
+</form>
+
+<script>
+    function DefaultPage() {
+      console.log("Default Page");      
+      //alert(document.getElementById('email').value);
+      //alert(document.getElementById('password').value);      
+
+      if (document.getElementById('email').value === null || document.getElementById('email').value == '' || document.getElementById('password').value == null || document.getElementById('password').value == '') {          
+        alert("Credenitals left blank");
+        var fullHTML = '<p><strong style="font-weight:700!important;">The e-mail cannot be left blank</p>';
+        displayData.insertAdjacentHTML('beforeend',fullHTML);     
+      }  
+      else {
+        localStorage.setItem("email", document.getElementById('email').value);
+        localStorage.setItem("password", document.getElementById('password').value);
+        window.open('https://playpen2.staging-sydney.near-me.com/salesforce', '_self'); 
+      } 
+
+      return false; 
+    }  
+  </script>

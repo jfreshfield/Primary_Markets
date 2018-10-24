@@ -1,0 +1,195 @@
+---
+name: user_authentication
+resource: Customization
+resource_owner: anyone
+configuration: 
+---
+
+{% comment %}
+    This page is used to perform the validation of the User Credentials, entered in the Login Page. We obtain the email address that the User enters, and perform a call
+    out to Salesforce, to determine if we have a Contact with that Email Address. If not, then we inform the User that the Email Address they entered is not valid. If we do
+    indeed have a Contact in Salesforce with that Email Address, we validate that the password they entered on the Login screen, matches the one we have in Salesforce. If 
+    not, again we return an error to the User. If the credentials they enter do indeed exist in Salesforce, then we log them in and route them to the default landing page.
+{% endcomment %}
+
+{% execute_query 'authorize_to_salesforce', result_name: 'authorize_response' %}
+{% if authorize_response.api_call_send.response.body %}
+    {% assign response = authorize_response.api_call_send.response.body | to_hash %}
+{% endif %}
+
+{% execute_query 'log', message: response %}
+
+{% if response.access_token == blank %}
+    {% execute_query 'log', type: 'error', message: 'Authorization to salesforce failed!' %}
+{% else %}
+    <script>
+        console.log("Top of User_Authentication(): " + '{{ response.access_token }}');
+        console.log("Top of User_Authentication(2): " + '{{ context.params.email }}');
+        
+        localStorage.setItem("UserEmail", '{{ context.params.email }}');
+        var emailAddress = '{{ context.params.email }}';   
+        localStorage.setItem("loggedIn", 0);
+
+        if ((emailAddress == null || emailAddress == "") && localStorage.getItem("validateEmailOnly") == 1) {
+            localStorage.setItem("Authenticated" , 1);
+            window.open('https://playpen2.staging-sydney.near-me.com/recover-password', '_self');
+        }
+
+        var xhr = new XMLHttpRequest(),
+            method = "GET",
+            //url = "https://primarymarkets--partial.cs57.my.salesforce.com/services/data/v43.0/query/?q=SELECT+Id,Email,Set_Initial_Password__c,Name,Login_Count__c+from+Contact+WHERE+Email='" + localStorage.getItem("email") + "'";
+            url = "https://primarymarkets--partial.cs57.my.salesforce.com/services/data/v43.0/query/?q=SELECT+Id,Email,Set_Initial_Password__c,AccountId,Name,FirstName,LastName,MobilePhone,MailingStreet,MailingCity,MailingState,MailingPostalCode,MailingCountry,Phone,Fax,Buyer_Type__c,Contact_Membership_Type__c,Intermediary_Type__c,Asset_Types_of_Interest__c,Industry_Interests__c,OtherIndustryInterest__c,Ecosystems__c,Login_Count__c+from+Contact+WHERE+Email='" + '{{ context.params.email }}' + "'";            
+            console.log("Contact URL: " + url);
+
+        xhr.open(method, url, true);
+        xhr.setRequestHeader("Authorization", "Bearer {{ response.access_token }}");
+        xhr.onreadystatechange = function () {
+            if(xhr.readyState === 4 && xhr.status === 200) {
+                var responseTextJSON = JSON.parse(xhr.responseText);
+                console.log("Size: " + responseTextJSON.totalSize);
+                localStorage.setItem("Authenticated" , 1);
+                if (responseTextJSON.totalSize == 0) {
+                     if (localStorage.getItem("validateEmailOnly") == 1) {
+                        window.open('https://playpen2.staging-sydney.near-me.com/recover-password', '_self');
+                     }
+                     else {    
+                        window.open('https://playpen2.staging-sydney.near-me.com/zone_process', '_self');
+                     }   
+                }
+                else {
+                    console.log("Id: " + responseTextJSON.records[0].Name);
+                    console.log("Email: " + responseTextJSON.records[0].Email);
+                    console.log("Password: " + responseTextJSON.records[0].Set_Initial_Password__c);
+                    console.log("Validate Email Only: " + localStorage.getItem("validateEmailOnly"));
+
+                    if (localStorage.getItem("validateEmailOnly") == 1) {                        
+                        if (responseTextJSON.records[0].Email == null) {                            
+                            window.open('https://playpen2.staging-sydney.near-me.com/recover-password', '_self');
+                        }
+                        else {
+                            if (responseTextJSON.records[0].Active__c == false) {
+                                window.open('https://playpen2.staging-sydney.near-me.com/recover-password', '_self');
+                            }          
+                            else {
+                                window.open('https://playpen2.staging-sydney.near-me.com/password-retrieve-confirmation', '_self');
+                            }
+                        }    
+                    }
+                    else {
+                        if (responseTextJSON.records[0].Email == null || responseTextJSON.records[0].Set_Initial_Password__c == null) {
+                            console.log("Email or Password is not valid");
+                            window.open('https://playpen2.staging-sydney.near-me.com/zone_process', '_self');
+                        }
+                        else {
+                            if (responseTextJSON.records[0].Email.trim() != localStorage.getItem("email").trim() || responseTextJSON.records[0].Set_Initial_Password__c.trim() != localStorage.getItem("password").trim()) {
+                                console.log("Email or Password is not valid 2");
+                                window.open('https://playpen2.staging-sydney.near-me.com/zone_process', '_self');
+                            }
+                            else {
+                                if (responseTextJSON.records[0].Active__c == false) {
+                                    window.open('https://playpen2.staging-sydney.near-me.com/zone_process', '_self');
+                                }
+                                else {
+                                    var responseTextJSON_Account = "";
+                                    var xhrAccount = new XMLHttpRequest(),
+                                        method = "GET",
+                                        //url = "https://primarymarkets--partial.cs57.my.salesforce.com/services/data/v43.0/query/?q=SELECT+Id,Email,Set_Initial_Password__c,Name,Login_Count__c+from+Contact+WHERE+Email='" + localStorage.getItem("email") + "'";
+                                        url = "https://primarymarkets--partial.cs57.my.salesforce.com/services/data/v43.0/query/?q=SELECT+Id,Name,Website+from+Account+WHERE+Id='" + responseTextJSON.records[0].AccountId + "'";
+                                        console.log("Account URL: " + url);
+
+                                    xhrAccount.open(method, url, true);
+                                    xhrAccount.setRequestHeader("Authorization", "Bearer {{ response.access_token }}");
+                                    xhrAccount.onreadystatechange = function () {
+                                        if(xhrAccount.readyState === 4 && xhrAccount.status === 200) {
+                                            responseTextJSON_Account = JSON.parse(xhrAccount.responseText);
+                                            localStorage.setItem("AccountName", responseTextJSON_Account.records[0].Name);
+                                            localStorage.setItem("WebAddress", responseTextJSON_Account.records[0].Website);              
+                                        }
+                                    };
+                                    xhrAccount.send();   
+                                                                                                    
+                                    localStorage.setItem("Name", responseTextJSON.records[0].Name);
+                                    localStorage.setItem("FirstName", responseTextJSON.records[0].FirstName);
+                                    localStorage.setItem("LastName", responseTextJSON.records[0].LastName);
+                                    localStorage.setItem("Email", responseTextJSON.records[0].Email);
+                                    localStorage.setItem("MobilePhone", responseTextJSON.records[0].MobilePhone);
+                                    localStorage.setItem("Password", responseTextJSON.records[0].Set_Initial_Password__c);                                    
+                                    localStorage.setItem("WorkAddress", responseTextJSON.records[0].MailingStreet);
+                                    localStorage.setItem("WorkCity", responseTextJSON.records[0].MailingCity);
+                                    localStorage.setItem("WorkState", responseTextJSON.records[0].MailingState);
+                                    localStorage.setItem("WorkPostCode", responseTextJSON.records[0].MailingPostalCode);
+                                    localStorage.setItem("WorkCountry", responseTextJSON.records[0].MailingCountry);
+                                    localStorage.setItem("WorkPhoneNumber", responseTextJSON.records[0].Phone);
+                                    localStorage.setItem("WorkFaxNumber", responseTextJSON.records[0].Fax);
+                                    localStorage.setItem("MembershipType", responseTextJSON.records[0].Contact_Membership_Type__c);
+                                    localStorage.setItem("BuyerType", responseTextJSON.records[0].Buyer_Type__c);
+                                    localStorage.setItem("IntermediaryType", responseTextJSON.records[0].Intermediary_Type__c);                                    
+                                    localStorage.setItem("AssetTypesOfInterest", responseTextJSON.records[0].Asset_Types_of_Interest__c);
+                                    localStorage.setItem("IndustryInterest", responseTextJSON.records[0].Industry_Interests__c);
+                                    localStorage.setItem("OtherInterest", responseTextJSON.records[0].OtherIndustryInterest__c);
+                                    localStorage.setItem("Ecosystem", responseTextJSON.records[0].Ecosystems__c);
+                                    localStorage.setItem("NumberOfInvestmentsPerYear", responseTextJSON.records[0].Number_of_Investments_per_year__c);
+                                    localStorage.setItem("InvestmentAmountPerDeal", responseTextJSON.records[0].Investment_Amount_Per_Deal__c);                         
+                                    localStorage.setItem("loggedIn", 1);
+                                    var loginCount = responseTextJSON.records[0].Login_Count__c;
+                                    loginCount ++;
+                                    UpdateUserLoginDetails(responseTextJSON.records[0].Id,'{{ response.access_token }}',loginCount);                                
+                                    window.open('https://playpen2.staging-sydney.near-me.com/featured-assets', '_self');
+                                }    
+                            }
+                        }
+                    }        
+                }    
+            }
+        };
+        xhr.send();   
+
+        function UpdateUserLoginDetails(contactID,accessToken,loginCount) {        
+            console.log("Top of Update User Login Details: " + contactID + " - " + accessToken + ' - ' + loginCount);
+            var currentDate = new Date().toISOString();            
+
+            if (contactID != null && contactID != "") {
+                var requestUrl = "https://primarymarkets--partial.cs57.my.salesforce.com/services/data/v43.0/sobjects/Contact/" + contactID.trim();
+
+                // ***********************************************************************
+                // * Create a JavaScript object with the Contact Login details to update *
+                // ***********************************************************************                
+
+                var contactInfo = {
+                    "Login_Count__c" : loginCount,
+                    "Last_Login_Date__c": currentDate              
+                }
+
+                // ***************************************
+                // * Convert the object to a JSON string *
+                // ***************************************
+
+                var contactInfoJson = JSON.stringify(contactInfo);
+
+                // ***************************************************************************************************
+                // * Send POST/PATCH with AJAX - POST is used to CREATE records, and PATCH is used to MODIFY records *
+                // ***************************************************************************************************
+
+                $.ajax({
+                    type: 'PATCH',
+                    url : requestUrl,
+
+                    // ************************************************************
+                    // * Add the Authorization Header, including the Access Token *
+                    // ************************************************************
+                    headers : {
+                        'Authorization' : 'Bearer ' + accessToken.trim(),
+                        'Content-Type' : 'application/json'
+                    },
+                    data : contactInfoJson,
+                    success : function(data){
+                        console.log("Success Response: " + data);                        
+                    },
+                    error: function(data){
+                        console.log("Error Response: " + data);
+                    }
+                });                
+            }            
+        }      
+    </script>
+{% endif %}

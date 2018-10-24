@@ -1,0 +1,31 @@
+---
+name: authorize_salesforce
+to: >
+  {% comment %}
+  {%- if context.environment == 'production' -%}
+  https://login.salesforce.com/services/oauth2/token?grant_type=password&...
+  {%- else -%}
+  https://test.salesforce.com/services/oauth2/token?grant_type=password&...
+  {%- endif -%}
+  {% endcomment %}
+
+  {% comment %}
+  Our Prod Login
+  https://login.salesforce.com/services/oauth2/token?grant_type=password&client_id=YjkyMzJmNDUzMGNmOTYzODVlNDQ0ZjE2OTUxOTU1NDI5MGViN2I3NWU3YTFjNmY300D0k000000DZZO&client_secret=8983295620726487553&username=bb1%40primarymarkets.com&password=w2LGDQDP5n1l
+
+  Below is the Sandbox login
+  {% endcomment %}
+
+  {% comment %}
+  https://test.salesforce.com/services/oauth2/token?grant_type=password&client_id=3MVG959Nd8JMmavR6vEQ86NsiBZ32HtkPov.eONCicrR.9KfhVhfHGVLaQCVkyooaIo0DAartnBmmOgAXk5Rw&client_secret=8688398464689451929&username=bb1@primarymarkets.com.partial&password=w2LGDQDP5n1l
+  {% endcomment %}
+  https://test.salesforce.com/services/oauth2/token?grant_type=password&client_id=3MVG959Nd8JMmavR6vEQ86NsiBZ32HtkPov.eONCicrR.9KfhVhfHGVLaQCVkyooaIo0DAartnBmmOgAXk5Rw&client_secret=8688398464689451929&username=apibot@primarymarkets.com.partial&password=Primary@3
+
+enabled: true
+format: http
+trigger_condition: true
+request_type: POST
+callback: ""
+headers: '{ "Content-Type": "application/json" }'
+---
+PING

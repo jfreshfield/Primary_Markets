@@ -1,0 +1,33 @@
+query get_listings($per_page: Int = 20, $page: Int = 1, $query: String) {
+  listings(
+    per_page: $per_page
+    page: $page
+    query: { keyword: $query }
+  ) {
+    total_entries
+
+    results {
+      slug
+      name
+      description
+
+      creator {
+        name
+        slug
+        avatar {
+          url(version: "thumb")
+        }
+      }
+
+      photos {
+        transformed: url(version: "transformed")
+        large: url(version: "large")
+      }
+    }
+  }
+
+  current_user {
+    id
+    email
+  }
+}

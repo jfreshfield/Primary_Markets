@@ -1,0 +1,23 @@
+name: test_profile
+custom_attributes:
+- name: third_party_api_value
+  attribute_type: string
+  name: email
+  attribute_type: string
+
+name: developer
+custom_attributes:
+- name: avatar2
+  attribute_type: image
+
+name: default
+custom_attributes:
+- name: password_token
+  attribute_type: string
+
+name: sign_in
+custom_attributes:
+- name: email
+  attribute_type: string
+- name: password
+  attribute_type: string  

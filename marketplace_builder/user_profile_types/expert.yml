@@ -1,0 +1,4 @@
+name: expert
+custom_attributes:
+- name: custom_images
+  attribute_type: photo

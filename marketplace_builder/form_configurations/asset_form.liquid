@@ -1,0 +1,69 @@
+---
+name: asset_form
+resource: Customization
+resource_owner: anyone
+configuration:
+    properties:
+        asset_name:
+            validation:
+                presence: true
+        public_name:
+        categories:
+            validation:
+                presence: true
+        sale_type:
+            validation:
+                presence: true
+        price_guide:
+            validation:
+                presence: true
+        status:
+            validation:
+                presence: true
+        owner_name:
+        public_summary:
+            validation:
+                presence: true
+        executive_summary:
+        item_description:
+        full_description_members_only: 
+        offering:
+        created_date:
+            validation:
+                presence: true
+        created_by_name:
+        last_modified_date:
+            validation:
+                presence: true
+        last_modified_by_name:
+        start_date:
+        enabled:
+        last_viewed_date:
+        close_date:
+        ecosystem:
+        asset_url:
+        asset_listing_stage:
+        asset_listing_classification:
+        commission_percentage:
+        commission_value:
+        open_eois:
+        total_value_eois_won:
+        listing_image_url:
+        public_image_url: 
+        rich_text:                                                                                                                  
+---
+{% form %}
+  <label for="name">Name</label>
+  <input name="{{ form_builder.fields.properties.name.name }}" value="{{ form_builder.fields.properties.name.value }}" id="name" type="text">
+  {% if form_builder.errors['properties.name'] %}
+    <p>{{ form_builder.errors['properties.name'] }}</p>
+  {% endif %}
+
+  <label for="description">Description</label>
+  <textarea name="{{ form_builder.fields.properties.description.name }}" id="public_name">{{ form_builder.fields.properties.description.value }}</textarea>
+  {% if form_builder.errors['properties.description'] %}
+    <p>{{ form_builder.errors['properties.description'] }}</p>
+  {% endif %}  
+
+  <button>Submit</button>
+{% endform %}

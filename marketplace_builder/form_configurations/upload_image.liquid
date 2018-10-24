@@ -1,0 +1,16 @@
+---
+name: upload_image
+resource: User
+name: upload_image
+resource: User
+configuration:
+  profiles:
+    expert:
+      custom_images:      
+---
+
+{% form action="/upload_image" method="post" %} 
+  <p class="action">
+    {% submit 'Save', class: 'button-a' %}
+  </p>
+{% endform %}  

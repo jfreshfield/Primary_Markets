@@ -1,0 +1,67 @@
+---
+slug: login
+format: html
+layout_name: application
+---
+{% comment %} <h2>Log in </h2> 
+{% render_form sign_in_form %}
+{% endcomment %}
+
+{% comment %}
+<p>Forgot password? <a href="/recover-password">Recover password</a></p>
+<p>New user? Create <a href="/developer/sign-up"> new developer account</a> or <a href="/client/client_sign_up">new client account</a></p>
+{% endcomment %}
+
+ <!DOCTYPE html amp>
+    <html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="https://www.facebook.com/2008/fbml" amp>      
+        {% comment %}<body id="body" onload="SalesforceAPIMain();">{% endcomment %}
+        <body id="body">          
+            <div id="offering-left-panel">
+                <div class="offering-left-group" style = "width:210px;margin-top:-550px; margin-left:-135px;float:left;">
+                    <form name="catseczoneform41723" onsubmit="return checkWholeForm41723(this)" method="post" action="https://www.primarymarkets.com/ZoneProcess.aspx?ZoneID=6947&amp;Referrer=https%3a%2f%2fwww.primarymarkets.com&amp;OID=16326818&amp;OTYPE=1">
+                        <h1>Login</h1>
+                        <div class="form">
+                            <div class="item">
+                                <label for="SZUsername">Email Address</label>
+                                <br />
+                                <input class="cat_textbox" name="Username" id="SZUsername" maxlength="255" type="text"> </div>
+                            <div class="item">
+                                <label for="SZPassword">Password</label>
+                                <br />
+                                <input class="cat_textbox" name="Password" id="SZPassword" maxlength="255" autocomplete="off" type="password"> </div>
+                            <div class="item">
+                                <input name="RememberMe" id="RememberMe" type="checkbox" checked="checked">
+                                <label for="RememberMe">Remember Me</label>
+                            </div>
+                            <div class="item" style="width:500px;">
+                                <input class="cat_button" value="Log in" type="submit">&nbsp;<a href="/reset_password" style="color:#3697d3;font-weight:500;">Forgot your password? Click here to reset now.</a> </div>
+                            <p>&nbsp;</p>
+                        </div>
+                        <script type="text/javascript" src="/CatalystScripts/ValidationFunctions.js?vs=b1951.r480527-phase1"></script>
+                        <script type="text/javascript">
+                            //<![CDATA[
+                            function checkWholeForm41723(theForm) {
+                                    var why = "";
+                                    if (theForm.Username) why += isEmpty(theForm.Username.value, "Username");
+                                    if (theForm.Password) why += isEmpty(theForm.Password.value, "Password");
+                                    if (why != "") {
+                                        alert(why);
+                                        return false;
+                                    }
+                                    theForm.submit();
+                                    return false;
+                                }
+                                //]]>
+                        </script>
+                    </form>
+                    <script language="javascript" type="text/javascript">
+                        /*
+                        if (document.location.protocol == "http:") {
+                            temp = document.location.pathname + document.location.search;
+                            document.location = "https://primarymarket.worldsecuresystems.com" + temp;
+                        }
+                        */
+                    </script>
+                </div>
+            </div>    
+        </body>    

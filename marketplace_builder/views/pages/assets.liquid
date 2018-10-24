@@ -1,0 +1,21 @@
+---
+slug: assets
+---
+
+{%- query_graph 'get_assets', result_name: 'g' -%}
+
+<ul>
+  {% for asset in g.customizations.results %}
+    {% if asset.enabled != "true" %}
+      {% comment %}{% break %}{% endcomment %}
+    {% endif %} 
+
+    <li>{{ asset.asset_name }}, {{ asset.public_name }}</li>
+  {% endfor %}
+</ul>
+
+{% include_form 'asset_form', parent_resource_id: 'asset' %}
+
+<td>
+  {% include_form "delete_contact_form", resource_id: asset.id, resource_type: 'asset' %}
+</td>

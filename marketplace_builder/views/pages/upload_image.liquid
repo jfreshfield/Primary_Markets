@@ -1,0 +1,59 @@
+---
+slug: upload_image
+layout_name: application
+---
+
+{% render_form 'upload_image' %}
+
+<p>
+
+Custom Images 2
+
+<input id="zonk" accept="image/gif, image/jpeg, image/jpg, image/png" data-s3-form-data="{{ form_builder.fields.profiles.expert.custom_images.photo.image.s3_upload.form_data }}=" data-s3-upload-url="{{ form_builder.fields.profiles.expert.custom_images.photo.image.s3_upload.direct_upload_url }}" data-s3-data-host="{{ form_builder.fields.profiles.expert.custom_images.photo.image.s3_upload.data_host }}" type="file">
+
+<input type="button" onclick="uploadFile();" value="Click2" /> 
+
+</p>
+
+<script type="text/javascript" script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.3.1.min.js">
+    import 'jquery-ui/ui/widget';
+    import 'jquery.iframe-transport';
+    import 'jquery.fileupload';
+
+    $(function () {
+       $.fn.uploadFile = function()
+            alert("Top of Upload File");
+            const fileInput = $("input#zonk");
+            const submitButton = $(fileInput.parents('form:first')).find('input[type="submit"]');
+            fileInput.fileupload({
+                    fileInput: fileInput,
+                    url: fileInput.data('s3UploadUrl'),
+                    type: 'POST',
+                    autoUpload: true,
+                    formData: $.extend({ 'x-amz-meta-bazinga': 422 }, fileInput.data('s3FormData')),
+                    paramName: 'file',
+                    dataType: 'XML',
+                    replaceFileInput: false,
+                    progressall: function (e, data) {
+                    console.log("Uploaded..:", parseInt(data.loaded / data.total * 100, 10));
+                },
+                    start: function (e) {
+                    submitButton.prop('disabled', true);
+                    console.log("Uploading");
+                },
+                    done: function (e, data) {
+                    submitButton.prop('disabled', false);
+
+                    var key = $(data.jqXHR.responseXML).find("Key").text();
+                    var fullLocation = $(data.jqXHR.responseXML).find("Location").text();
+                    var url = '//' + fileInput.data('s3DataHost') + '/' + key;
+                    console.log("File uploaded to: ", fullLocation);
+                },
+                    fail: function (e, data) {
+                    submitButton.prop('disabled', false);
+                    console.log("Failed: ", data);
+                }
+            });
+        };
+    };      
+ </script>

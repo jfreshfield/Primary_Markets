@@ -1,0 +1,468 @@
+<!-- Start Footer -->
+
+<footer>
+    <!DOCTYPE HTML amp>
+
+    <script>
+        console.log("Location: " + window.location.href);
+        var topDiv = '';
+        if (window.location.href.trim() == "https://playpen2.staging-sydney.near-me.com/member" || window.location.href.trim() == "https://playpen2.staging-sydney.near-me.com/account") {
+            topDiv = '<div id="follower-home-holder" style="margin-top: -35px">';
+        }
+        else {
+            topDiv = '<div id="follower-home-holder" style="margin-top: 50px">';
+        }
+
+        document.write(topDiv.trim());
+    </script>
+    
+    <div id="follower-holder">         
+
+    <div class="follower-caption"> Become a Follower </div>
+        <div class="follower-form">
+            {% comment %}<form method="post" action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" onsubmit="return checkWholeFormBF(this)"> {% endcomment %}
+            <form onsubmit="return checkWholeFormBF(this)">
+
+    <input type="hidden" name="oid" value="00D7F000003h4EL">
+    <input type="hidden" name="lead_source" value="Web Follower Form">
+    <input type="hidden" name="retURL" value="http://www.primarymarkets.com/thank-you-follower">
+
+        <input id="first_name" name="first_name" type="text" class="fcat_textbox" maxlength="255" onfocus="if(this.value==this.defaultValue) this.value='';" value="First Name" onblur="if(this.value=='')this.value=this.defaultValue;">
+        <input id="last_name" name="last_name" type="text" class="fcat_textbox" maxlength="255" onfocus="if(this.value==this.defaultValue) this.value='';" value="Last Name" onblur="if(this.value=='')this.value=this.defaultValue;">
+        <input type="text" id="email" name="email" class="fcat_textbox" maxlength="255" onfocus="if(this.value==this.defaultValue) this.value='';" value="Email Address" onblur="if(this.value=='')this.value=this.defaultValue;"> 
+                        
+    <div style="display: none">
+        <input type="text" name="s_content" id="s_content" class="cat_textbox" />
+        <input type="text" name="s_summary" id="s_summary" class="cat_textbox" value="561a6965e1f7401f9b771c75091c6d7d" />
+    </div>
+                            
+    <img src="{{ '/images/btn-submit.jpg' | asset_url}}images/btn-submit.jpg" onclick="showCaptcha();" id="tempA" />
+
+    <div id="tempB" style="display: none; clear:both;">
+    <div style="display:inline-block; text-align:center; margin-top:5px;">
+        {% comment %}<script type="text/javascript" src="{{ '/scripts/ValidationFunctions.js?vs=b218.r520595-phase1' | asset_url}}scripts/ValidationFunctions.js?vs=b218.r520595-phase1"></script> {% endcomment %}
+
+    <div class="g-recaptcha" data-sitekey="6LcGXxsUAAAAALhWpOesJevjsD2KnvmZbTZADnIJ" data-callback="correctCaptcha"></div>        
+    <input type="submit" name="submit" class="btn-green" value="Submit Details" id="catwebformbutton" style="cursor:pointer; margin-top:5px; font-family:'Pier';font-size:15px;height:34px;line-height:34px;text-transform:uppercase;background-color:#27AF60;color:#fff;text-align:center;padding-right:20px;padding-left:20px;margin-right:auto;margin-left:auto;border:none;">
+    </div>
+    </div>     
+
+    {% comment %}<script type="text/javascript" src="{{ '/scripts/ValidationFunctions.js' | asset_url }}scripts/ValidationFunctions.js"></script> {% endcomment %}
+    <script type="text/javascript">
+        function showCaptcha() {
+            document.getElementById("tempA").style.display = "none";
+            document.getElementById("tempB").style.display = "block";
+        }
+
+        var submitcount = 0;
+
+        function checkWholeFormBF(theForm) {                                      
+            var why = "";
+            var emailAddress = document.getElementById("email").value;
+
+            if (document.getElementById("first_name").value == "First Name") why += "- Please enter First Name\n";
+            if (document.getElementById("last_name").value == "Last Name") why += "- Please enter Last Name\n";
+            if (document.getElementById("email").value == "Email Address") why += "- Please enter Email Address\n";
+
+            if (document.getElementById("email").value != "Email Address") {
+                var emailValid =  validateEmail(emailAddress);
+
+                if (emailValid === false) {
+                    why += "- Please enter a valid Email Address\n";    
+                }
+            }
+
+            //alert(why);
+
+            //if (theForm['g-recaptcha-response']) why += reCaptchaV2IsInvalid(theForm, "Please prove you're not a robot");                                
+            //alert("reCaptcha: " + theForm['g-recaptcha-response']);
+            //if (theForm['g-recaptcha-response']) why += "Please prove you're not a robot - reCaptcha Invalid";
+
+            var reCaptchaResponse = grecaptcha.getResponse();
+            if (reCaptchaResponse = null || reCaptchaResponse == "") {
+                why += "Please prove you're not a robot - reCaptcha Invalid";  
+            }
+
+            if (why != "") {
+                alert(why);
+                return false;
+            }
+
+            localStorage.setItem("first_name", document.getElementById("first_name").value);
+            localStorage.setItem("last_name", document.getElementById("last_name").value);
+            localStorage.setItem("email", document.getElementById("email").value);
+
+            if (submitcount == 0) {                
+                console.log("Submit Count: " + submitcount);                                           
+                submitcount++;
+                window.open('https://playpen2.staging-sydney.near-me.com/follower', '_self');
+                //theForm.submit();                
+                return false;
+            } else {       
+                console.log("Submit Count NOT zero");                                                                  
+                return false;
+            }      
+        }
+
+        function validateEmail(email) {
+            var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+            return re.test(String(email).toLowerCase());
+        }
+    </script>                        
+                        </form>  
+                    </div>
+                <div style="clear:both; height:0px;">&nbsp;</div> </div>
+            </div>           
+
+            <div id="footer-wrapper">
+                <div id="footer"> <div style="clear: both;" class="footer-col1">
+                    <a href="/"><img alt="" src="{{ '/images/logo-primary-market.png' | asset_url}}images/logo-primary-market.png" style="border-width: 0px; border-style: solid;" class="ftlogo"></a>
+                    <div class="ft-sm"><a target="_blank" href="https://www.facebook.com/PrimaryMarkets"><span class="ic-facebook"></span></a><a target="_blank" href="https://twitter.com/Primary_Markets"><span class="ic-twitter"></span></a><a target="_blank" href="https://www.linkedin.com/company/primarymarkets"><span class="ic-linkedin"></span></a></div>
+                    <p style="font-weight:normal; font-family: OpenSans; font-size:15px; line-height:1.2;">Level 12, 179 Elizabeth Street, Sydney NSW 2000
+                        <br />PO Box A298 Sydney South NSW 1235 Australia
+                        <br />+61 2 9993 4475</p>
+                    <p style="margin-bottom:0px; font-weight:normal; font-family: OpenSans;"> 2018 &copy; PrimaryMarkets Limited | All Rights Reserved</p>                   
+                </div>
+
+                <div class="footer-col2" style="font-weight:normal;">
+                    <ul>
+                        <li><a href="/about">About Us</a> </li>
+                        <li><a href="/our-team">Our Team</a> </li>
+                        <li><a href="/legal">Legal</a> </li>
+                        <li><a href="/press">Press</a> </li>
+                        <li><a href="/blog">Blog</a> </li>
+                        <li><a href="/careers">Careers</a> </li>
+                        <li><a href="/glossary">Glossary</a> </li>
+                    </ul>
+                </div>
+
+                <div class="footer-col3" style="font-weight:normal;">
+                    <ul>
+                        <li><a href="/faqs">Frequently Asked Questions</a> </li>
+                        <li><a href="/contact-us">Request Information</a> </li>
+                        <li><a href="/sellers">Selling an Investment</a> </li>
+                        <li><a href="/buyers">Buying an Investment</a> </li>
+                        <li><a href="/intermediaries">Intermediaries</a> </li>
+                        <li><a href="/current-offerings">Investments Currently for Sale</a> </li>
+                    </ul>
+                </div>
+
+                <div style="clear:both">&nbsp;</div> </div>
+                    </div>
+                    <a href="#" class="scrollup"></a>
+                    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+                    <script type="text/javascript" src="{{ '/scripts/custom.js' | asset_url}}scripts/custom.js"></script>
+                    <script src="{{ '/scripts/slick.js' | asset_url}}scripts/slick.js" type="text/javascript" charset="utf-8"></script>
+                    <script src="{{ '/scripts/jquery.backstretch.min.js' | asset_url}}scripts/jquery.backstretch.min.js"></script>
+                    <script type="text/javascript">
+                        if (1 == 1) {
+                            $("#login-status").show();
+                        } else
+                            $("#login-status").hide();
+
+
+                        /* Scroll */
+                        $(document).ready(function() {
+                            $(window).bind("scroll", function() {
+
+                                /* Scroll Top Btn */
+                                if ($(this).scrollTop() > $(window).height() - 1) {
+                                    $('.scrollup').fadeIn();
+                                } else {
+                                    $('.scrollup').fadeOut();
+                                }
+                            });
+
+
+                            $('.scrollup').click(function() {
+                                $("html, body").animate({
+                                    scrollTop: 0
+                                }, 1000);
+                                return false;
+                            });
+
+                        });
+                    </script>
+                    <script type="text/javascript" src=""></script>
+                    <script>
+                        $("#menu-toggle span").click(function() {
+                            $("ul.menu").slideToggle();
+                        });
+
+                        $(".parent").click(function() {
+                            $(this).next("ul.submenu").slideToggle();
+                        });
+                    </script>
+                    <script>
+                        $(document).ready(function() {
+
+                            $(".bnrit").slick({
+                                speed: 750,
+                                arrows: true,
+                                autoplay: true,
+                                fade: true,
+                                adaptiveHeight: true,
+                                pauseOnHover: false,
+                                prevArrow: "<img class='a-left control-c prev slick-prev' src=' {{ '/images/arrow-left-w.png' | asset_url}}images/arrow-left-w.png'>",
+                                nextArrow: "<img class='a-right control-c next slick-next' src=' {{ '/images/arrow-right-w.png' | asset_url}}images/arrow-right-w.png'>",
+                                infinite: true,
+                                autoplaySpeed: 5000
+                            });
+
+                            $(".ecosystem-home").slick({
+                                dots: false,
+                                speed: 300,
+                                slidesToShow: 3,
+                                slidesToScroll: 3,
+                                autoplay: true,
+
+
+                                autoplaySpeed: 5000,
+                                prevArrow: "<img class='a-left control-c prev slick-prev' src=' {{ '/images/arrow-left.png' | asset_url}}images/arrow-left.png'>",
+                                nextArrow: "<img class='a-right control-c next slick-next' src=' {{ '/images/arrow-right.png' | asset_url}}images/arrow-right.png'>",
+                                responsive: [{
+                                        breakpoint: 1024,
+                                        settings: {
+                                            arrows: false,
+                                            dots: false,
+                                            slidesToShow: 3,
+                                            slidesToScroll: 3,
+                                            infinite: true
+                                        }
+                                    }, {
+                                        breakpoint: 600,
+                                        settings: {
+                                            arrows: false,
+                                            dots: false,
+                                            slidesToShow: 2,
+                                            slidesToScroll: 2,
+                                            infinite: true
+                                        }
+                                    }, {
+                                        breakpoint: 480,
+                                        settings: {
+                                            arrows: false,
+                                            slidesToShow: 1,
+                                            slidesToScroll: 1,
+                                            infinite: true
+                                        }
+                                    }
+                                    // You can unslick at a given breakpoint now by adding:
+                                    // settings: "unslick"
+                                    // instead of a settings object
+                                ]
+                            });
+
+                            $(".asset-home").slick({
+                                dots: false,
+                                speed: 300,
+                                slidesToShow: 3,
+                                slidesToScroll: 3,
+                                autoplay: true,
+
+
+                                autoplaySpeed: 5000,
+                                prevArrow: "<img class='a-left control-c prev slick-prev' src=' {{ '/images/arrow-left.png' | asset_url}}images/arrow-left.png'>",
+                                nextArrow: "<img class='a-right control-c next slick-next' src=' {{ '/images/arrow-right.png' | asset_url}}images/arrow-right.png'>",
+                                responsive: [{
+                                        breakpoint: 1024,
+                                        settings: {
+                                            arrows: false,
+                                            dots: false,
+                                            slidesToShow: 3,
+                                            slidesToScroll: 3,
+                                            infinite: true
+                                        }
+                                    }, {
+                                        breakpoint: 600,
+                                        settings: {
+                                            arrows: false,
+                                            dots: false,
+                                            slidesToShow: 2,
+                                            slidesToScroll: 2,
+                                            infinite: true
+                                        }
+                                    }, {
+                                        breakpoint: 480,
+                                        settings: {
+                                            arrows: true,
+                                            slidesToShow: 1,
+                                            slidesToScroll: 1,
+                                            infinite: true
+                                        }
+                                    }
+                                    // You can unslick at a given breakpoint now by adding:
+                                    // settings: "unslick"
+                                    // instead of a settings object
+                                ]
+                            });
+
+                            $(".webinar-home").slick({
+                                dots: false,
+                                speed: 300,
+                                slidesToShow: 4,
+                                slidesToScroll: 4,
+                                autoplay: true,
+                                autoplaySpeed: 5000,
+                                prevArrow: "<img class='a-left control-c prev slick-prev' src=' {{ '/images/arrow-left.png' | asset_url}}images/arrow-left.png'>",
+                                nextArrow: "<img class='a-right control-c next slick-next' src=' {{ '/images/arrow-right.png' | asset_url}}images/arrow-right.png'>",
+                                responsive: [{
+                                        breakpoint: 1024,
+                                        settings: {
+                                            arrows: false,
+                                            dots: false,
+                                            slidesToShow: 3,
+                                            slidesToScroll: 3,
+                                            infinite: true
+                                        }
+                                    }, {
+                                        breakpoint: 600,
+                                        settings: {
+                                            arrows: false,
+                                            dots: false,
+                                            slidesToShow: 2,
+                                            slidesToScroll: 2,
+                                            infinite: true
+                                        }
+                                    }, {
+                                        breakpoint: 480,
+                                        settings: {
+                                            arrows: true,
+                                            slidesToShow: 1,
+                                            slidesToScroll: 1,
+                                            infinite: true
+                                        }
+                                    }
+                                    // You can unslick at a given breakpoint now by adding:
+                                    // settings: "unslick"
+                                    // instead of a settings object
+                                ]
+                            });
+
+                            $(".activity-home").slick({
+                                speed: 300,
+                                dots: true,
+                                arrows: false,
+                                autoplay: true,
+                                autoplaySpeed: 5000
+                            });
+
+                            $(".testimonial-home").slick({
+                                dots: true,
+                                arrows: false,
+                                slidesToShow: 1,
+                                autoplay: true,
+                                infinite: true,
+                                adaptiveHeight: true,
+                                autoplaySpeed: 10000
+
+                            });
+                        });
+                    </script> <!--Start of Zopim Live Chat Script-->
+
+            <script type="text/javascript">
+            window.$zopim||(function(d,s){var z=$zopim=function(c){z._.push(c)},$=z.s=
+            d.createElement(s),e=d.getElementsByTagName(s)[0];z.set=function(o){z.set.
+            _.push(o)};z._=[];z.set._=[];$.async=!0;$.setAttribute("charset","utf-8");
+            $.src="//v2.zopim.com/?3h57nT2LkUHbg1vCVAdIJObtwos4uyLh";z.t=+new Date;$.
+            type="text/javascript";e.parentNode.insertBefore($,e)})(document,"script");
+            </script>
+            <!--End of Zopim Live Chat Script-->
+            <!-- Start Google Analytics Script -->
+            <script>
+            //var USER_ID = $.cookie('VID2177892');
+
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+            (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+            m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+            //ga('create', 'UA-69720427-1', 'auto');
+            ga('create', 'UA-69720427-1', 'auto', {
+                //userId: USER_ID
+            });
+            ga('send', 'pageview');
+            //ga('set', 'userId', USER_ID);
+            </script>
+            <!-- End Google Analytics Script -->
+            <!-- Start Structured Data - website -->
+            <script type="application/ld+json">
+                {
+                "@context": "https://schema.org",
+                "@type": "Organization",
+                    "url": "https://www.primarymarkets.com",
+                "logo": "https://www.primarymarkets.com/images/logo_primarymarkets_square.jpg",  
+                    "description": "PrimaryMarkets delivers liquidity to Unlisted Securities and Investments. Buyers and Sellers are able to participate in off-market transactions, thereby creating liquidity.",
+                    "contactPoint" : [{
+                "@type" : "ContactPoint",
+                "telephone" : "+61 2 9993 4475",
+                "contactType" : "customer service"
+            }],
+                "sameAs" : [
+                "https://www.facebook.com/PrimaryMarkets",
+                "https://twitter.com/Primary_Markets",
+                "https://www.linkedin.com/company/primarymarkets"
+                ]
+                }
+                </script>
+            <!-- End Structured Data - website -->
+
+            <script type="text/javascript"> _linkedin_data_partner_id = "24916"; </script><script type="text/javascript"> (function(){var s = document.getElementsByTagName("script")[0]; var b = document.createElement("script"); b.type = "text/javascript";b.async = true; b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js"; s.parentNode.insertBefore(b, s);})(); </script> <script type="text/javascript">
+                piAId = '280962';
+                piCId = '1470';
+
+                (function() {
+
+                    function async_load() {
+
+                        var s = document.createElement('script');
+                        s.type = 'text/javascript';
+
+                        s.src = ('https:' == document.location.protocol ? 'https://pi' : 'http://cdn') + '.pardot.com/pd.js';
+
+                        var c = document.getElementsByTagName('script')[0];
+                        c.parentNode.insertBefore(s, c);
+
+                    }
+
+                    if (window.attachEvent) {
+                        window.attachEvent('onload', async_load);
+                    } else {
+                        window.addEventListener('load', async_load, false);
+                    }
+
+                })();
+            </script>
+                <script>
+                    $("document").ready(function($) {
+                        $(window).scroll(function() {
+                            if ($(this).scrollTop() > 100 && ($(window).width() > 1100)) {
+                                $('#header-sticky-wrapper').addClass("sticky-reveal");
+                                $('#top-wrapper').addClass("sticky-hide");
+                                $('#menu-wrapper').addClass("sticky-hide");
+                            } else {
+                                $('#header-sticky-wrapper').removeClass("sticky-reveal");
+                                $('#top-wrapper').removeClass("sticky-hide");
+                                $('#menu-wrapper').removeClass("sticky-hide");
+                            }
+                        });
+
+
+                        $('.countnum').each(function() {
+                            $(this).prop('Counter', 0).animate({
+                                Counter: $(this).text()
+                            }, {
+                                duration: 2000,
+                                easing: 'swing',
+                                step: function(now) {
+                                    $(this).text(Math.ceil(now));
+                                }
+                            });
+                        });
+                    });
+                </script>
+            </div>
+        </div>    
+ </footer>   
+
+<!-- End Footer -->

@@ -1,0 +1,285 @@
+---
+slug: featured-assets
+layout_name: application
+---
+{% render_form 'featured_assets', resource_type: 'salesforce' %}
+
+{% comment %}
+    Setup the Meta Data and Project Name
+{% endcomment %}
+
+{% content_for 'meta_title' %}Featured Assets{% endcontent_for %}
+{% content_for 'meta_desc' %}Featured Assets page is used to demonstrate accessing of Platform OS DB.{% endcontent_for %}
+{% content_for 'project_name' %}Primary Markets{% endcontent_for %}
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="https://www.facebook.com/2008/fbml" amp>
+
+<style>
+        /* Sub menu */
+        
+        #content #offering-left-panel li {
+            padding: 7px 0px 7px 20px;
+            border-bottom: 1px solid #ddd;
+            background-position: left center;
+        }
+        .offering-title:before {
+            content: '+';
+            display: block;
+            color: #fff;
+            font-weight: bold;
+            width: 20px;
+            float: right;
+            height: 20px;
+            cursor: pointer;
+        }
+        .offering-title.open:before {
+            content: '-';
+        }
+        .btn-lhs {
+            margin-bottom: 20px;
+            padding: 10px 5%;
+            width: 90%;
+            font-size: 15px!important;
+        }
+        .offering-left-group {
+            line-height: 1.5;
+            margin-bottom: 20px;
+        }
+        .offering-title {
+            background: #2f98d2;
+            color: #fff;
+            padding: 10px 0px 10px 20px;
+            font-size: 15px;
+            cursor: pointer;
+            border: none;
+            border-radius: 4px;
+            -webkit-border-radius: 4px;
+            -moz-border-radius: 4px;
+            box-shadow: inset 0px 0px 0px 0 #2f98d2, 0px 3px 3px 0 #D2EFFF, 0px 3px 3px 0 #FFFFFF;
+            -moz-box-shadow: inset 0px 0px 0px 0 #2f98d2, 0px 3px 3px 0 #D2EFFF, 0px 3px 3px 0 #FFFFFF;
+            -webkit-box-shadow: inset 0px 0px 0px 0 #2f98d2, 0px 3px 3px 0 #D2EFFF, 0px 3px 3px 0 #FFFFFF;
+        }
+        .offering-titl {
+            background: #2f98d2;
+            color: #fff;
+            padding: 10px 0px 10px 20px;
+            font-size: 15px;
+            line-height: 1;
+            cursor: pointer;
+            border: none;
+            border-radius: 4px;
+            -webkit-border-radius: 4px;
+            -moz-border-radius: 4px;
+            box-shadow: inset 0px 0px 0px 0 #2f98d2, 0px 3px 3px 0 #D2EFFF, 0px 3px 3px 0 #FFFFFF;
+            -moz-box-shadow: inset 0px 0px 0px 0 #2f98d2, 0px 3px 3px 0 #D2EFFF, 0px 3px 3px 0 #FFFFFF;
+            -webkit-box-shadow: inset 0px 0px 0px 0 #2f98d2, 0px 3px 3px 0 #D2EFFF, 0px 3px 3px 0 #FFFFFF;
+        }
+        #offering-left-panel a {
+            color: #000;
+        }
+        .offering-left-group ul {
+            display: none;
+        }
+        #offering-left-panel .offering-title a,
+        #offering-left-panel .offering-titl a {
+            color: #fff;
+            text-decoration: none;
+        }
+        .planet-innovation,
+        .blackwall,
+        .nitro,
+        .selfwealth,
+        .licella,
+        .tyro,
+        .xyz-ltd,
+        .blooms,
+        .haoma,
+        .moneytech,
+        .primarymarkets,
+        .airr,
+        .vgw {
+            display: none;
+        }
+    </style>
+    
+    {% comment %}<body id="body" onload="SalesforceAPIMain();">{% endcomment %}
+    <body id="body">
+        <div id="offering-left-panel">
+            <div class="offering-left-group" style = "width:210px;margin-top:-550px; margin-left:-135px; float:left;">
+                <div class="offering-title ">Capital Raises</div>
+                <ul class="list-reset flex flex-wrap mb3">
+                    <li class="px1"><a class="text-decoration-none ampstart-label"><a href="/assets/securities">Securities</a> </li>
+                    <li class="px1"><a class="text-decoration-none ampstart-label"><a href="/assets/funds">Funds</a> </li>
+                    <li class="px1"><a class="text-decoration-none ampstart-label"><a href="/assets/fixed-income">Fixed Income</a> </li>
+                    <li class="px1"><a class="text-decoration-none ampstart-label"><a href="/assets/commercial">Commercial</a> </li>
+                    <li class="px1"><a class="text-decoration-none ampstart-label"><a href="/assets/direct-assets">Direct Assets</a> </li>
+                    <li class="px1"><a class="text-decoration-none ampstart-label"><a href="/assets/crypto-blockchain">Crypto</a> </li>
+                    <li class="px1"><a class="text-decoration-none ampstart-label"><a href="/assets/past-offers">Past Offers</a> </li>
+                    <li class="px1"><a class="text-decoration-none ampstart-label"><a href="/list-a-new-asset">List a New Asset</a> </li>
+                </ul>
+            </div>
+
+            <div class="offering-left-group" style = "width:210px;margin-top:-490px; margin-left:-135px; float:left;">
+                <div class="offering-title ">Secondary Trading</div>
+                <ul class="list-reset flex flex-wrap mb3">
+                    <li class="px1"><a class="text-decoration-none ampstart-label"><a href="/ecosystems">About Ecosystems  </a> </li>
+                    <li class="px1"><a class="text-decoration-none ampstart-label"><a href="/custom/airr">AIRR</a> </li>
+                    <li class="px1"><a class="text-decoration-none ampstart-label"><a href="/custom/blackwall-property-funds">BlackWall</a> </li>
+                    <li class="px1"><a class="text-decoration-none ampstart-label"><a href="/custom/blooms-the-chemist">Blooms the Chemist</a> </li>
+                    <li class="px1"><a class="text-decoration-none ampstart-label"><a href="/custom/haoma-mining">Haoma Mining</a> </li>
+                    <li class="px1"><a class="text-decoration-none ampstart-label"><a href="/custom/moneytech">Moneytech</a> </li>
+                    <li class="px1"><a class="text-decoration-none ampstart-label"><a href="/custom/planet-innovation">Planet Innovation</a> </li>
+                    <li class="px1"><a class="text-decoration-none ampstart-label"><a href="//www.primarymarkets.com/open-assets-on-offer/pub-group-unlisted-existing-stapled-securities">Pelathon</a> </li>
+                    <li class="px1"><a class="text-decoration-none ampstart-label"><a href="/custom/tyro-payments">Tyro</a> </li>
+                </ul>
+            </div>
+        </div> 
+
+        {% comment %}<div id="offering-mid-panel">
+            <div id="mainPanel" style=" border:5px solid  #26B05F; padding:20px; margin-top:-550px; margin-left:-70px; margin-right:-135px;float:left;overflow-wrap: break-word;" class="featured">
+                <h1>Featured</h1> 
+                <p id="assetNamePrompt"><strong style="font-weight:700!important;">
+                <span class="h5 block mb3"><strong style="font-weight:700!important;"><a id="assetNameValue" href="https://www.primarymarkets.com/open-assets-on-offer/sale-of-online-lifestyle-magazine"> </strong></a></span>
+                <p id="saleTypePrompt"><strong style="font-weight:700!important;"></strong>
+            </div> 
+        </div>{% endcomment %} 
+
+        <div style=" border-top:5px solid  #26B05F;  border-top:-600px; margin-top:-590px; margin-left:105px; margin-right:-135px; padding-top:20px; padding-bottom:20px; margin-bottom:20px; float:left;" class="featured">
+            <h1>Featured</h1>                        
+            <p id="assetNamePrompt">
+        </div>   
+    </body>   
+
+    {% comment %}
+        At the moment, I am using this page as the default page in the system. When the User clicks the login button from the initial page, they are automatically
+        re-directed here. Given that we are using Salesforce for User/Member verification, we must perform the required Salesforce calls server-side with Liquid, not with
+        Javascript, as we cannot expose our credentials to the public. Thus, as the initial Login page is rendered with Liquid upon load, we need to perform the
+        validation on a separate page after the User has entered their Login/Password and clicked on the Login button, which submits the initial form. For the time being,
+        as this is the default page, we will perform the Member verification through Salesforce below.
+
+        The code below can be used to obtain the e-mail entered by the User on the initial login form:
+
+        {% query_graph 'current_user', result_name: 'current_user_details' %}
+        E-Mail: {{ current_user_details.current_user.email }}
+
+        Alternatively, as I have stored the Username and Password entered by the User in Javascript Session variables, we can obtain those values using the code below:
+
+        <script>
+            var email = localStorage.getItem("email");
+            var password = localStorage.getItem("password");
+        </script>
+    {% endcomment %}
+
+    <script>
+        console.log("Fake script ready for Salesforce Member validation, after we have made the necessary Liquid calls out to Salesforce");
+    </script>
+
+    {% comment %}
+        Make a call to the Salesforce Authorization server, in order to obtain an Access Token. The Salesforce API requires that a valid Access Token is sent, along with any 
+        requests made to it. These Access Tokens are only valid for 2 hours from the time that the Account was last accessed, which is why we need to send a request to the 
+        Salesforce Authorization server to get a valid token, before attempting to make any requests to their API.
+
+        Once we have obtained the Access Token, we will make our first call to the Salesforce API. This initial call, will be to obtain a list of recently added/modified Assets.
+    {% endcomment %}
+
+    {%- query_graph 'get_assets', result_name: 'g' -%}
+
+        {% for asset in g.customizations.results %}        
+            {% if asset.enabled != "true" %}
+                {% break %}
+            {% endif %} 
+
+            {% assign lastRecord = false %}
+            {% if forloop.first == true %} 
+                {% assign firstRecord = true %}
+            {% else %} 
+                {% assign firstRecord = false %}
+                {% if forloop.last == true %}  
+                    {% assign lastRecord = true %}  
+                {% endif %}    
+            {% endif %}
+
+            {% assign publicNameSize = asset.public_name | size %}        
+
+            {% if publicNameSize == 0 %}
+                {% assign titleDisplay = asset.asset_name %}
+            {% else %}    
+                {% assign titleDisplay = asset.public_name %}
+            {% endif %}
+
+            {% assign originalSummarySize = asset.executive_summary | size %}   
+            {% assign summaryTextTemp = asset.executive_summary | split: '</span' %}
+            {% assign summaryText = summaryTextTemp[0] %}
+            {% assign newSummarySize = summaryText | size %}            
+
+            {% if newSummarySize == originalSummarySize %}
+                {% assign summaryTextTemp = asset.executive_summary | split: '<br />' %}
+                {% assign summaryText = summaryTextTemp[0] %}
+                {% assign newSummarySize = summaryText | size %}
+            {% endif %}
+
+            {% if newSummarySize == originalSummarySize %}
+                {% assign summaryTextTemp = asset.executive_summary | split: '<br>' %}
+                {% assign summaryText = summaryTextTemp[0] %}                        
+                {% assign newSummarySize = summaryText | size %}
+            {% endif %}
+
+            {% if newSummarySize == originalSummarySize %}
+                {% assign summaryTextTemp = asset.executive_summary | split: '</br>' %}
+                {% assign summaryText = summaryTextTemp[0] %}
+                {% assign newSummarySize = summaryText | size %}
+            {% endif %}  
+
+            {% if newSummarySize == originalSummarySize %}
+                {% assign summaryTextTemp = asset.executive_summary | split: '</p>' %}
+                {% assign summaryText = summaryTextTemp[0]  %}
+                {% assign newSummarySize = summaryText | size %}
+            {% endif %}
+
+            {% assign summaryText = summaryText | strip_html | append: "......"  %}
+            {% execute_query 'log', message: summaryText %}
+
+            <script>
+                console.log("Top of FeaturedAssets()" + localStorage.getItem("email") + '/' + localStorage.getItem("password"));
+                var displayData = document.getElementById('assetNamePrompt');
+                var fullHTML;
+                if ( {{ firstRecord }} == true) {
+                    fullHTML = '';    
+                }                
+                var title = "";
+                var endOfSummaryChar = 0;
+                var summaryText = "";
+                var dataURL =  "https://primarymarkets--partial.cs57.my.salesforce.com/services/data/v43.0/sobjects/Asset/" + '{{ asset.id }}';
+                var itemID = '{{ asset.id }}';
+                var moreDetailURL = "";
+
+                var regex = "services/data/v43.0/sobjects/Asset/";
+                var assetURL = dataURL.replace(regex, '');
+                assetURL = assetURL.substr(0,assetURL.length-3);
+                console.log("Asset URL: " + assetURL);
+                console.log("Title: " + ' {{ titleDisplay }}');
+               
+                fullHTML += '<div><div class="asset-new-item" style="border-top:1px dotted #cccccc; margin-bottom:15px; clear:both; padding-top:20px; float:left; box-sizing: border-box; width:400px%; ">';
+                fullHTML += '<div class="four-fifths"><h3><span class="logout8029405"><a href="https://www.primarymarkets.com/open-assets-on-offer/spritz-australia-s-aperitivo-capital-raise" style="color: #3697d3;">' + ' {{ titleDisplay }}' + '</a></span> <span class="login8029405" style="display:none;"><a href="/assets-on-offer/spritz-australia-s-aperitivo-capital-raise"></a></span> </h3>';                
+                fullHTML += '<div class="two-fifths"><img src="' + "{{ '/images/listings/SOFI_Spritz300x192px.png' | asset_url }}images/listings/SOFI_Spritz300x192px.png" + '"></div><div class="three-fifths last"><div style="margin-bottom:20px;">';
+                fullHTML += ' {{ summaryText }}' + '</div>';
+                fullHTML += '<div class="logout8029405"><a href="https://www.primarymarkets.com/open-assets-on-offer/spritz-australia-s-aperitivo-capital-raise" class="readmore" style="color:#3697d3;">Read more</a></div></div></div>';                
+                fullHTML += '<div class="fifth last" style="box-sizing:border-box; padding:10px!important; background-color:#f1f2f2; font-size:13px;"><strong>Status</strong>: <strong>' + ' {{ asset.status }}' + '</strong><br /><br />';
+                fullHTML += '<strong>Price Guide</strong>: ' + ' {{ asset.price_guide }}' + '<br /><br /><strong>Categories</strong>: ' + ' {{ asset.categories }}' + '<div style="clear:both"></div></div></div>';
+
+                /*fullHTML += '<div class="asset-new-item" style="border-top:1px dotted #cccccc; clear:both; padding-top:20px; float:left; box-sizing: border-box; width:100%; ">';              
+                fullHTML += '<p id="assetNamePrompt"><strong style="font-weight:700!important;">Asset Name:</strong>';
+                fullHTML += '<a name="ViewSFDetails" href=' + assetURL + ' style="color: rgb(255, 255, 255) display:block;"><span class="cat_button m-hide" style="float: right; margin-left:15px; margin-bottom:15px; ">View S/F details</a>'
+                fullHTML += '<span class="logout7588539"><strong style="color:#3697d3;font-weight:700!important;width:420px;position:float-top;overflow-wrap:break-word;"><a id="assetNameValue" href="https://www.primarymarkets.com/open-assets-on-offer/sale-of-online-lifestyle-magazine">' + ' {{ titleDisplay }}' + '</strong></a><br>';                           
+                fullHTML += '<strong style="font-weight:700!important;">Sale Type: </strong>' + ' {{ asset.sale_type }}' + '<br>';
+                fullHTML += '<strong style="font-weight:700!important;">Price Guide: </strong>' + ' {{ asset.price_guide }}' + '<br>';
+                fullHTML += '<strong style="font-weight:700!important;">Status: </strong>' + ' {{ asset.status }}' + '<br><br>';
+                fullHTML += '<strong style="font-weight:700!important;">Summary: </strong>' + ' {{ summaryText }}' + '</span></p>'; */
+
+                if ( {{ lastRecord }} == true) {                    
+                    displayData.insertAdjacentHTML('afterbegin',fullHTML);                    
+                }    
+            </script>                                   
+        {% endfor %}
+</html>

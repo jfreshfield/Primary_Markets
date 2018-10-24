@@ -1,0 +1,61 @@
+---
+name: follower
+resource: Customization
+resource_owner: anyone
+---
+
+{% comment %}
+    This page is used to update Salesforce with a new Lead record, for this Follower. If successful, we then display a welcome message to the User
+{% endcomment %}
+
+
+{% execute_query 'authorize_to_salesforce', result_name: 'authorize_response' %}
+{% if authorize_response.api_call_send.response.body %}
+    {% assign response = authorize_response.api_call_send.response.body | to_hash %}
+{% endif %}
+
+{% execute_query 'log', message: response %}
+
+{% if response.access_token == blank %}
+    {% execute_query 'log', type: 'error', message: 'Authorization to salesforce failed!' %}
+{% else %}
+    <script>
+        console.log("Top of Follower: " + '{{ response.access_token }}');
+       
+        // Set the URL as follows, to create a NEW Opportunity record
+        var requestUrl = "https://primarymarkets--partial.cs57.my.salesforce.com/services/data/v43.0/sobjects/Lead";
+
+        // Create a JavaScript object with the Opportunity field values
+        var leadInfo = {
+            "FirstName" : localStorage.getItem("first_name"),
+            "LastName": localStorage.getItem("last_name"),
+            "Email": localStorage.getItem("email"),
+            "Company": localStorage.getItem("first_name") + " " +  localStorage.getItem("last_name"),         
+            "Status": "New"
+        }               
+
+        // Convert the object to a JSON string
+        var leadInfoJson = JSON.stringify(leadInfo);
+
+        // Send POST with AJAX -
+        $.ajax({
+            type: 'POST',
+            url : requestUrl,
+            // Add the Authorization Header including the Access Token
+            headers : {
+                'Authorization' : 'Bearer ' + '{{ response.access_token }}',
+                'Content-Type' : 'application/json'
+            },
+            data : leadInfoJson,
+            success : function(response){
+                //console.log("Resp: " + response);
+                //alert(response);
+                window.open('https://playpen2.staging-sydney.near-me.com/thank_you_follower', '_self');
+            },
+            error: function(response){
+                //console.log("Resp: " + response);
+                //alert(response);
+            }
+        });                 
+    </script>                
+{% endif %}                                             

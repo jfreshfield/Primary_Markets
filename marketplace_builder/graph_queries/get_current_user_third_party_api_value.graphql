@@ -1,0 +1,8 @@
+query get_current_user_third_party_api_value {
+  current_user {
+    email
+    test_profile: profile(profile_type: "test_profile") {
+        third_party_api_value: property(name: "third_party_api_value")
+    }
+  }
+}

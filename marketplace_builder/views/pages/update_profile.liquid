@@ -1,0 +1,20 @@
+---
+name: update_profile
+redirect_to: /update_profile
+---
+{% comment %}
+{% assign profile = form_builder.fields.profiles.developer %}
+{% assign avatar = profile.custom_images.avatar %}
+{% assign image_s3_upload = avatar.image.s3_upload %}
+{% assign bio_field = form_builder.fields.profiles.developer.properties.bio %}
+
+{% include 'update_profile/html_form' %}
+
+<hr>
+
+{% include 'update_profile/ajax' %}
+
+<hr>
+
+{% include 'update_profile/name_with_ajax' %}
+{% endcomment %}

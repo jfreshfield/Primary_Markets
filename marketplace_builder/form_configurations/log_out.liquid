@@ -1,0 +1,34 @@
+---
+name: log_out
+resource: Session
+---
+{% comment %}
+    Log the Member out by deleting their session, and clearing any values in all Local Storage variables
+{% endcomment %}
+
+{% form method: 'delete' %}
+  {% comment %}<button>Log Out</button> {% endcomment %}
+
+  <!DOCTYPE html amp>
+  <html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="https://www.facebook.com/2008/fbml" amp>      
+      <body id="body">          
+          <div id="offering-left-panel">
+              <div class="offering-left-group" style = "margin-top:-550px; margin-left:-135px;float:left;width:1000px;">    
+                <div class="system-message">
+                  <h1>Log Out Confirmation</h1>
+                  <p>You have successfully logged out of this secure area.</p>
+                </div><!-- END .system-message -->
+              </div>  
+          </div>
+      </body>
+  </html>        
+
+  <script>    
+    localStorage.clear();
+
+    if (!window.location.hash) {
+        window.location = window.location + '#loaded';
+        window.location.reload();
+    }  
+  </script>  
+{% endform %}

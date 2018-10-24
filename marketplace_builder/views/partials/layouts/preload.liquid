@@ -1,0 +1,7 @@
+{% comment %}
+<link rel="preload" href="{{ 'manifest.js' | asset_url }}" as="script">
+<link rel="preload" href="{{ 'vendor.js' | asset_url }}" as="script">
+<link rel="preload" href="{{ 'app.js' | asset_url }}" as="script">
+{% endcomment %}
+
+{% yield 'preload' %}

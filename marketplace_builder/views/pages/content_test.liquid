@@ -1,0 +1,36 @@
+---
+slug: content-test
+layout_name: application
+---
+{% render_form 'content_test', resource_type: 'salesforce' %}
+
+{% comment %}
+    Setup the Meta Data and Project Name
+{% endcomment %}
+
+{% content_for 'meta_title' %}Content Test{% endcontent_for %}
+{% content_for 'meta_desc' %}Content Test page is used to demonstrate accessing of Platform OS DB.{% endcontent_for %}
+{% content_for 'project_name' %}Primary Markets{% endcontent_for %}
+
+{%- include 'content_holder/redirect_hostname' -%}
+
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:fb="https://www.facebook.com/2008/fbml" amp>
+      <body id="body">
+        <div id="offering-left-panel">
+            <div class="offering-left-group" style = "width:210px;margin-top:-550px; margin-left:-135px; float:left;">
+                <div class="offering-title ">Capital Raises</div>
+                <ul class="list-reset flex flex-wrap mb3">
+                    <li class="px1"><a class="text-decoration-none ampstart-label"><a href="/assets/securities">Securities</a> </li>
+                    <li class="px1"><a class="text-decoration-none ampstart-label"><a href="/assets/funds">Funds</a> </li>
+                    <li class="px1"><a class="text-decoration-none ampstart-label"><a href="/assets/fixed-income">Fixed Income</a> </li>
+                    <li class="px1"><a class="text-decoration-none ampstart-label"><a href="/assets/commercial">Commercial</a> </li>
+                    <li class="px1"><a class="text-decoration-none ampstart-label"><a href="/assets/direct-assets">Direct Assets</a> </li>
+                    <li class="px1"><a class="text-decoration-none ampstart-label"><a href="/assets/crypto-blockchain">Crypto</a> </li>
+                    <li class="px1"><a class="text-decoration-none ampstart-label"><a href="/assets/past-offers">Past Offers</a> </li>
+                    <li class="px1"><a class="text-decoration-none ampstart-label"><a href="/list-a-new-asset">List a New Asset</a> </li>
+                </ul>
+            </div>
+        </div>
+      </body>      
+</html>

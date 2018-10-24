@@ -1,0 +1,50 @@
+---
+slug: follower
+---
+
+{% include_form 'follower',  resource_type: 'salesforce' %}
+
+{% comment %}
+    This page is used to add a new Follower into Salesforce, then call a page to display a welcome message to the User.
+{% endcomment %}
+
+{% comment %}
+{% render_form 'follower', resource_type: 'salesforce' %}
+
+{% content_for 'meta_title' %}Follower Thank You{% endcontent_for %}
+{% content_for 'meta_desc' %}Follower Thank You Message.{% endcontent_for %}
+{% content_for 'project_name' %}New Follower{% endcontent_for %}
+
+{% execute_query 'authorize_to_salesforce', result_name: 'authorize_response' %}
+{% if authorize_response.api_call_send.response.body %}
+    {% assign response = authorize_response.api_call_send.response.body | to_hash %}
+{% endif %}
+
+{% execute_query 'log', message: response %}
+
+{% if response.access_token == blank %}
+    {% execute_query 'log', type: 'error', message: 'Authorization to salesforce failed!' %}
+{% else %}
+      {% capture data_string %}
+        {
+                "salesforce_request": "https://primarymarkets--partial.cs57.my.salesforce.com/services/data/v43.0/sobjects/Lead/",
+                "access_token": "{{ response.access_token }}",
+                "instance_url": "{{ response.instance_url }}",
+                "first_name": localStorage.getItem("first_name"),
+                "last_name": localStorage.getItem("last_name"),
+                "email": localStorage.getItem("email")
+        }
+        {% endcapture %}
+
+        {% assign data = data_string | to_hash %}
+        {% execute_query 'log', message: response %}
+        {% execute_query 'log', message: data %}
+        {% execute_query 'update_salesforce', data: data, result_name: 'api_response' %}
+
+        {% if api_response.api_call_send.response.body %}
+            {% assign response_data = api_response.api_call_send.response.body | to_hash %}
+        {% endif %}  
+
+        {% execute_query 'log', message: response_data %}
+{% endif %}
+{% endcomment %}

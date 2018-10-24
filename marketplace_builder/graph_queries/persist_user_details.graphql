@@ -1,0 +1,16 @@
+mutation persist_user_details($email: ID!, $password: String!) {
+  user_update(
+    id: $email,
+    user: {
+      profiles: [
+        {
+          name: "sign_in"
+          values: { properties: [{ name: "password", value: $password }] }
+        }
+      ]
+    }
+    form_configuration_name: "callback_persist_user_details"
+  ) {
+    id
+  }
+}
